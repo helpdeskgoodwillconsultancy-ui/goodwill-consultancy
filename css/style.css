@@ -1065,3 +1065,11 @@ section {
     font-size: 1.1rem;
     margin-top: auto;
 }
+
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 3rem 0 1rem; }
+.footer-col h4 { color: var(--gold); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 0.5rem; font-size: 0.9rem; }
+.footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: center; font-size: 0.85rem; }
