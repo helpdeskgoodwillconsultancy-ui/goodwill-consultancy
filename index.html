@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodwill Consultancy Service | From Registration to Advisory</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <style>
+        .mission-vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .mv-card { padding: 2rem; background: var(--white); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: var(--shadow); }
+        .services-preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .service-preview-card { padding: 1.5rem; background: var(--white); border-radius: 8px; box-shadow: var(--shadow-sm); transition: transform 0.3s ease; }
+        .service-preview-card:hover { transform: translateY(-5px); }
+        .service-preview-card h4 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .service-preview-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .service-preview-card a { color: var(--gold); font-weight: 500; font-size: 0.9rem; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .team-card { text-align: center; padding: 2rem; background: var(--white); border-radius: 12px; }
+        .team-card .avatar { width: 80px; height: 80px; background: var(--navy); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto;">
+                <div>
+                    <h1 style="line-height: 1.1;">Goodwill Consultancy</h1>
+                    <p>From Registration to Advisory</p>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="ph ph-list"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="index.html#calculator">Calculator</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#contact" class="btn btn-primary">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text animate-fade-up">
+                <h2>Your Trusted Partner in Financial Growth & Business Success</h2>
+                <p>Welcome to Goodwill Consultancy Service (GCS). Whether you’re a startup taking your first step, a growing entrepreneur, or an established company, we provide end-to-end tax, financial, legal, and business advisory solutions tailored to your needs.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Book a Free Consultation &rarr;</a>
+                    <a href="services.html" class="btn btn-outline">Explore Services</a>
+                </div>
+            </div>
+            
+            <div class="hero-quote animate-fade-up" style="animation-delay: 0.2s">
+                <blockquote>"Behind every successful business is a team that manages the numbers right."</blockquote>
+                <cite>— At GCS, we make those numbers work for you.</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-light">
+        <div class="container">
+            <div class="section-header animate-fade-up">
+                <span class="eyebrow">Introduction</span>
+                <h2>Bridging the Gap Between Financial Expertise and Business Innovation</h2>
+                <p class="mt-1">At Goodwill Consultancy Service, we bring holistic solutions to modern businesses. Our goal is not just compliance but growth. We ensure your business doesn’t just survive regulatory complexities, but thrives with strategic planning and sustained growth support.</p>
+            </div>
+            
+            <div class="mission-vision-grid animate-fade-up">
+                <div class="mv-card">
+                    <i class="ph ph-target" style="font-size: 2rem; color: var(--gold);"></i>
+                    <h3>Our Mission</h3>
+                    <p>“We simplify the complex — so businesses can focus on growing, not on paperwork.”</p>
+                </div>
+                <div class="mv-card">
+                    <i class="ph ph-eye" style="font-size: 2rem; color: var(--gold);"></i>
+                    <h3>Our Vision</h3>
+                    <p>“Every business, built to last. Every number, built to trust.”</p>
+                </div>
+            </div>
+
+            <!-- Team Overview -->
+            <div class="mt-4 animate-fade-up">
+                <h3 class="text-center mb-2">Our Strength: A Multi-Disciplinary Team</h3>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="avatar">TA</div>
+                        <h4>Tax & Accounting Experts</h4>
+                        <p>Ensuring accuracy, compliance, and financial clarity.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="avatar">BA</div>
+                        <h4>Business Advisors</h4>
+                        <p>Guiding entrepreneurs with strategies that transform ideas into enterprises.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="section-navy">
+        <div class="container">
+            <div class="section-header text-center animate-fade-up">
+                <h2 style="color: white;">Our Services</h2>
+                <p style="color: rgba(255,255,255,0.8);">A complete suite of financial, tax, legal, and advisory services designed for startups and growing enterprises.</p>
+            </div>
+            
+            <div class="services-preview-grid animate-fade-up">
+                <div class="service-preview-card">
+                    <h4>1. Registration</h4>
+                    <p>Company, ESI, PF, GST, Income tax</p>
+                    <a href="services.html#registration">Learn More &rarr;</a>
+                </div>
+                <div class="service-preview-card">
+                    <h4>2. Book-keeping</h4>
+                    <p>Accounts, invoice</p>
+                    <a href="services.html#bookkeeping">Learn More &rarr;</a>
+                </div>
+                <div class="service-preview-card">
+                    <h4>3. Taxation</h4>
+                    <p>Income tax, GST, TDS, Property</p>
+                    <a href="services.html#taxation">Learn More &rarr;</a>
+                </div>
+                <div class="service-preview-card">
+                    <h4>4. Financial Planning</h4>
+                    <p>Individual, Company</p>
+                    <a href="services.html#planning">Learn More &rarr;</a>
+                </div>
+                <div class="service-preview-card">
+                    <h4>5. Reporting</h4>
+                    <p>Final report, Financial Model</p>
+                    <a href="services.html#reporting">Learn More &rarr;</a>
+                </div>
+                <div class="service-preview-card">
+                    <h4>6. Consultation & Advisory</h4>
+                    <p>Strategic advisory across all areas</p>
+                    <a href="services.html#advisory">Learn More &rarr;</a>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="services.html" class="btn btn-primary">View All Services &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="section-light">
+        <div class="container">
+            <div class="section-header text-center animate-fade-up">
+                <h2>Why Choose GCS?</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card animate-fade-up">
+                    <div class="why-num">01</div>
+                    <h4>Expertise Across Domains</h4>
+                    <p>Tax, Finance, Legal & Business Strategy under one roof.</p>
+                </div>
+                <div class="why-card animate-fade-up">
+                    <div class="why-num">02</div>
+                    <h4>Tailored Solutions</h4>
+                    <p>Because no two businesses are the same.</p>
+                </div>
+                <div class="why-card animate-fade-up">
+                    <div class="why-num">03</div>
+                    <h4>End-to-End Support</h4>
+                    <p>From registration to sustained growth.</p>
+                </div>
+                <div class="why-card animate-fade-up">
+                    <div class="why-num">04</div>
+                    <h4>Transparency & Reliability</h4>
+                    <p>We believe in building trust before numbers.</p>
+                </div>
+            </div>
+            <div class="text-center mt-3 animate-fade-up">
+                <p><strong>Would you trust your growth with just anyone, or with experts who understand both your compliance and your vision?</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="section-cream">
+        <div class="container">
+            <div class="section-header text-center animate-fade-up">
+                <h2>Income Tax Cal</h2>
+                <p>Calculate your estimated tax liability for FY 2024-25.</p>
+            </div>
+            <div class="calculator-container animate-fade-up">
+                <div class="calc-tabs">
+                    <button class="calc-tab active" id="tab-individual">Individual / Salaried</button>
+                    <button class="calc-tab" id="tab-business">Business / Company</button>
+                </div>
+                <div class="calc-body">
+                    <!-- Individual Section -->
+                    <div class="calc-section active" id="sec-individual">
+                        <div class="input-panel">
+                            <h3 class="mb-1">Income Details</h3>
+                            <div class="toggle-container">
+                                <div class="regime-toggle active" id="regime-new">New Regime</div>
+                                <div class="regime-toggle" id="regime-old">Old Regime</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Annual Gross Income (₹)</label>
+                                <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Age Group</label>
+                                <select id="indiv-age">
+                                    <option value="<60">Below 60 Years</option>
+                                    <option value="60-80">Senior Citizen (60-80 Years)</option>
+                                    <option value="80+">Super Senior (80+ Years)</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="deductions-wrapper" style="opacity: 0.5;">
+                                <label>Additional Deductions (80C, 80D, etc.)</label>
+                                <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
+                            </div>
+                            <!-- Asset Portal Section (Income Tax Portal rules) -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Add Asset (Income Tax Portal)</label>
+                                    <select id="indiv-asset-type">
+                                        <option value="none">No Asset Added</option>
+                                        <option value="computers">Computers & Software (40% Dep.)</option>
+                                        <option value="machinery">Plant & Machinery (15% Dep.)</option>
+                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset Purchase Value (₹)</label>
+                                    <input type="number" id="indiv-asset-value" placeholder="e.g. 50000" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-panel">
+                            <div class="result-box">
+                                <h4>Total Tax</h4>
+                                <div class="amount" id="res-indiv-tax">₹0</div>
+                                <div class="help-text">Effective Rate: <span id="res-indiv-rate">0%</span></div>
+                            </div>
+                            <div class="result-box">
+                                <h4>Taxable Income</h4>
+                                <div style="font-size: 1.2rem; font-weight: 600;" id="res-indiv-taxable">₹0</div>
+                            </div>
+                            <div id="indiv-breakdown"></div>
+                        </div>
+                    </div>
+                    <!-- Business Section -->
+                    <div class="calc-section" id="sec-business">
+                        <div class="input-panel">
+                            <h3 class="mb-1">Company Details</h3>
+                            <div class="form-group">
+                                <label>Net Taxable Profit (₹)</label>
+                                <input type="number" id="biz-profit" placeholder="e.g. 5000000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Type</label>
+                                <select id="biz-type">
+                                    <option value="pvt">Private Limited Company</option>
+                                    <option value="llp">LLP</option>
+                                    <option value="proprietorship">Proprietorship</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Gross Turnover / Receipts (₹)</label>
+                                <input type="number" id="biz-turnover" placeholder="e.g. 10000000" min="0">
+                                <span class="help-text">Used to determine surcharge and applicable corporate tax rates.</span>
+                            </div>
+                            <!-- Asset Portal Section (Income Tax Portal rules) -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Add Asset (Income Tax Portal)</label>
+                                    <select id="biz-asset-type">
+                                        <option value="none">No Asset Added</option>
+                                        <option value="computers">Computers & Software (40% Dep.)</option>
+                                        <option value="machinery">Plant & Machinery (15% Dep.)</option>
+                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset Purchase Value (₹)</label>
+                                    <input type="number" id="biz-asset-value" placeholder="e.g. 200000" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-panel">
+                            <div class="result-box">
+                                <h4>Corporate Tax</h4>
+                                <div class="amount" id="res-biz-tax">₹0</div>
+                                <div class="help-text">Effective Rate: <span id="res-biz-rate">0%</span></div>
+                            </div>
+                            <div class="result-box">
+                                <h4>Taxable Income</h4>
+                                <div style="font-size: 1.2rem; font-weight: 600;" id="res-biz-taxable">₹0</div>
+                            </div>
+                            <div id="biz-breakdown"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculator Disclaimer -->
+                <div class="calc-disclaimer">
+                    Tax limit is not subjected to actual returns, book with us to attain true results
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-light">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info animate-fade-up">
+                    <h2>Ready to Grow?</h2>
+                    <p>Fill out our Quick Contact Form and our team will get back to you. "Your growth is our goodwill."</p>
+                    <ul class="contact-details">
+                        <li><i class="ph-fill ph-phone"></i><span><a href="tel:+919363476100" style="color: inherit; text-decoration: none; font-weight: 500;">+91 93634 76100</a></span></li>
+                        <li><i class="ph-fill ph-envelope"></i><span><a href="mailto:info@goodwillconsultancy.in" style="color: inherit; text-decoration: none; font-weight: 500;">info&#64;goodwillconsultancy.in</a></span></li>
+                        <li><i class="ph-fill ph-map-pin"></i><span>Goodwill Consultancy Service, Main Road, India</span></li>
+                    </ul>
+                </div>
+                <div class="contact-form-container animate-fade-up">
+                    <!-- Netlify Form integration -->
+                    <form class="contact-form" id="contact-form" method="POST" data-netlify="true">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Service</label>
+                            <select name="service" required>
+                                <option value="">Select a service</option>
+                                <option>Company Registration</option>
+                                <option>Book-keeping</option>
+                                <option>Taxation</option>
+                                <option>Financial Planning</option>
+                                <option>Reporting</option>
+                                <option>Advisory</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-navy-gold">Send Message &rarr;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/919363476100" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 Goodwill Consultancy Service. All rights reserved.</p>
+            <div class="footer-social-icons">
+                <a href="https://wa.me/919363476100" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="mailto:info@goodwillconsultancy.in" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                <a href="https://instagram.com/goodwill_consultancy" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>

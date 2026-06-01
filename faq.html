@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | Goodwill Consultancy Service</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-section { padding: 4rem 0; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; margin-bottom: 1rem; border-radius: 8px; box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--border); }
+        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--navy); }
+        .faq-answer { padding: 0 1.5rem 1.5rem; color: var(--text-muted); display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .ph-plus { transform: rotate(45deg); }
+        .ph-plus { transition: transform 0.3s ease; }
+    </style>
+</head>
+<body class="section-light">
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto;">
+                <div>
+                    <h1 style="line-height: 1.1; color: white;">Goodwill Consultancy</h1>
+                    <p style="color: rgba(255,255,255,0.8);">From Registration to Advisory</p>
+                </div>
+            </a>
+            <button class="mobile-toggle" id="mobile-toggle"><i class="ph ph-list"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="index.html#calculator">Calculator</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header" style="margin-top: 80px;">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about starting and managing your business with GCS.</p>
+        </div>
+    </div>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <div class="faq-question">1. Why should I hire a tax consultant instead of filing on my own? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">While online portals allow self-filing, a professional tax consultant ensures accuracy, maximizes deductions, and prevents penalties. At GCS, we also provide strategic tax planning to help you save money legally and efficiently.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">2. Which type of company registration is best for startups? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">It depends on your goals. Private Limited is best for seeking investors, while LLP is ideal for professionals/partnerships. Proprietorship is easiest for freelancers.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">3. How long does it take to register a new company in India? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Usually 7–10 working days with proper documentation.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">4. Do I need to register for GST even if my business is small? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Mandatory if turnover exceeds ₹40 lakhs (goods) or ₹20 lakhs (services), or for interstate/e-commerce sales. Many opt in voluntarily for input tax credits.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">5. What documents are required for Income Tax Filing? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Individuals: Form 16, bank statements, investment proofs. Businesses: Books of accounts, GST reports, previous ITRs.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">6. What is a CMA Report and why do banks ask for it? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">A Credit Monitoring Arrangement (CMA) Report helps banks assess your business’s financial health and repayment ability. We prepare bank-trusted reports.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">7. Do you also help with business loans? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Yes! We provide support for Term loans, working capital, NBFC loans, and project Feasibility CMA documentation.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">8. How can startups benefit from your consulting services? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">We act as a one-stop partner for registration, daily bookkeeping, tax filings, financial planning, reporting, and advisory.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">9. What makes GCS different? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Expertise across Finance, Tax, Legal, and Business Advisory under one roof. We focus on sustained growth, not just compliance.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">10. How do I know if my business is ROC compliant? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Every registered company must file annual returns. We handle these filings so you never miss a deadline.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">11. Do you offer ongoing support? <i class="ph ph-plus"></i></div>
+                    <div class="faq-answer">Yes, we provide both one-time services and ongoing support like monthly bookkeeping and tax management.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/919363476100" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 Goodwill Consultancy Service. All rights reserved.</p>
+            <div class="footer-social-icons">
+                <a href="https://wa.me/919363476100" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="mailto:info@goodwillconsultancy.in" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                <a href="https://instagram.com/goodwill_consultancy" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

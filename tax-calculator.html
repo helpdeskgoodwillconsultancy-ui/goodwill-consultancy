@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Cal (FY 2024-25) | Goodwill Consultancy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body class="section-cream">
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto;">
+                <div>
+                    <h1 style="line-height: 1.1; color: white;">Goodwill Consultancy</h1>
+                    <p style="color: rgba(255,255,255,0.8);">From Registration to Advisory</p>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="ph ph-list"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="index.html#calculator">Calculator</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header" style="margin-top: 80px;">
+        <div class="container">
+            <h1>Income Tax Cal</h1>
+            <p>Calculate your estimated tax liability for FY 2024-25 accurately and easily. Whether you're a salaried individual or a growing company, know your numbers.</p>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <section>
+        <div class="container">
+            <div class="calculator-container animate-fade-up">
+                <div class="calc-tabs">
+                    <button class="calc-tab active" id="tab-individual">Individual / Salaried</button>
+                    <button class="calc-tab" id="tab-business">Business / Company</button>
+                </div>
+                
+                <div class="calc-body">
+                    <!-- Individual Section -->
+                    <div class="calc-section active" id="sec-individual">
+                        <div class="input-panel">
+                            <h3 class="mb-1">Income Details</h3>
+                            
+                            <div class="toggle-container">
+                                <div class="regime-toggle active" id="regime-new">New Regime</div>
+                                <div class="regime-toggle" id="regime-old">Old Regime</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Annual Gross Income (₹)</label>
+                                <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Age Group</label>
+                                <select id="indiv-age">
+                                    <option value="&lt;60">Below 60 Years</option>
+                                    <option value="60-80">Senior Citizen (60-80 Years)</option>
+                                    <option value="80+">Super Senior (80+ Years)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="deductions-wrapper" style="opacity: 0.5;">
+                                <label>Additional Deductions (80C, 80D, etc.)</label>
+                                <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
+                                <span class="help-text">Standard deduction of ₹75,000 (New) / ₹50,000 (Old) is auto-applied for salaried.</span>
+                            </div>
+
+                            <!-- Asset Portal Section (Income Tax Portal rules) -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Add Asset (Income Tax Portal)</label>
+                                    <select id="indiv-asset-type">
+                                        <option value="none">No Asset Added</option>
+                                        <option value="computers">Computers & Software (40% Dep.)</option>
+                                        <option value="machinery">Plant & Machinery (15% Dep.)</option>
+                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset Purchase Value (₹)</label>
+                                    <input type="number" id="indiv-asset-value" placeholder="e.g. 50000" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-panel">
+                            <div class="result-box">
+                                <h4>Total Tax Liability</h4>
+                                <div class="amount" id="res-indiv-tax">₹0</div>
+                                <div class="help-text">Effective Rate: <span id="res-indiv-rate">0%</span></div>
+                            </div>
+                            
+                            <div class="result-box">
+                                <h4>Net Taxable Income</h4>
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--navy);" id="res-indiv-taxable">₹0</div>
+                            </div>
+                            
+                            <h4 class="mb-1">Tax Breakdown</h4>
+                            <div id="indiv-breakdown">
+                                <!-- JS injected -->
+                            </div>
+                            
+                            <div class="mt-2 text-center">
+                                <a href="index.html#contact" class="btn btn-navy-gold w-100">Want to save more tax legally? Talk to our experts &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Section -->
+                    <div class="calc-section" id="sec-business">
+                        <div class="input-panel">
+                            <h3 class="mb-1">Company Details</h3>
+                            
+                            <div class="form-group">
+                                <label>Net Taxable Profit (₹)</label>
+                                <input type="number" id="biz-profit" placeholder="e.g. 5000000" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Business Type</label>
+                                <select id="biz-type">
+                                    <option value="pvt">Private Limited Company</option>
+                                    <option value="llp">Limited Liability Partnership (LLP)</option>
+                                    <option value="proprietorship">Proprietorship / Individual</option>
+                                    <option value="newmfg">New Manufacturing Co. (115BAB)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Gross Turnover / Receipts (₹)</label>
+                                <input type="number" id="biz-turnover" placeholder="e.g. 10000000" min="0">
+                                <span class="help-text">Used to determine surcharge and applicable corporate tax rates.</span>
+                            </div>
+
+                            <!-- Asset Portal Section (Income Tax Portal rules) -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Add Asset (Income Tax Portal)</label>
+                                    <select id="biz-asset-type">
+                                        <option value="none">No Asset Added</option>
+                                        <option value="computers">Computers & Software (40% Dep.)</option>
+                                        <option value="machinery">Plant & Machinery (15% Dep.)</option>
+                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset Purchase Value (₹)</label>
+                                    <input type="number" id="biz-asset-value" placeholder="e.g. 200000" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-panel">
+                            <div class="result-box">
+                                <h4>Total Corporate Tax</h4>
+                                <div class="amount" id="res-biz-tax">₹0</div>
+                                <div class="help-text">Effective Rate: <span id="res-biz-rate">0%</span></div>
+                            </div>
+                            
+                            <div class="result-box">
+                                <h4>Net Taxable Income</h4>
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--navy);" id="res-biz-taxable">₹0</div>
+                            </div>
+                            
+                            <h4 class="mb-1">Tax Breakdown</h4>
+                            <div id="biz-breakdown">
+                                <!-- JS injected -->
+                            </div>
+                            
+                            <div class="mt-2 text-center">
+                                <a href="index.html#contact" class="btn btn-navy-gold w-100">Reduce your corporate tax burden — consult our CA team &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Calculator Disclaimer -->
+                <div class="calc-disclaimer">
+                    Tax limit is not subjected to actual returns, book with us to attain true results
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/919363476100" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 Goodwill Consultancy Service. All rights reserved.</p>
+            <div class="footer-social-icons">
+                <a href="https://wa.me/919363476100" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="mailto:info@goodwillconsultancy.in" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                <a href="https://instagram.com/goodwill_consultancy" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>

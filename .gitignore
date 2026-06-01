@@ -1,0 +1,12 @@
+# Backend leftovers
+server.js
+database.js
+package.json
+package-lock.json
+node_modules/
+goodwill.db
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

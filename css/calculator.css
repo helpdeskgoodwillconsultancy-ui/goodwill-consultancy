@@ -1,0 +1,141 @@
+/* Calculator Styles */
+.calculator-container {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.calc-tabs {
+    display: flex;
+    background: var(--navy);
+}
+
+.calc-tab {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    transition: var(--transition);
+}
+
+.calc-tab:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.calc-tab.active {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.calc-body {
+    padding: 40px;
+}
+
+.calc-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.calc-section.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .calc-section.active {
+        grid-template-columns: 1fr;
+    }
+}
+
+.input-panel {
+    background: var(--cream);
+    padding: 30px;
+    border-radius: var(--radius);
+}
+
+.result-panel {
+    padding: 30px;
+    background: #fdfbf7;
+    border: 1px solid #eee;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+}
+
+.result-box {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.result-box h4 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.result-box .amount {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--navy);
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 0.95rem;
+}
+
+.breakdown-row:last-child {
+    border-bottom: none;
+}
+
+.breakdown-row strong {
+    color: var(--navy);
+}
+
+.toggle-container {
+    display: flex;
+    background: rgba(10, 22, 40, 0.1);
+    border-radius: 30px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.regime-toggle {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.regime-toggle.active {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.help-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    display: block;
+}
