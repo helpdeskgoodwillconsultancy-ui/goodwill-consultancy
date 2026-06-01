@@ -1,7 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /node_modules/
-Disallow: /package.json
-Disallow: /package-lock.json
-
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://goodwillconsultancyservice.com/sitemap.xml
