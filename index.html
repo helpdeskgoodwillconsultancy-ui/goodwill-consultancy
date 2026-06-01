@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goodwill Consultancy Service | From Registration to Advisory</title>
-    <img src="images/GCS%20Logo.jpg.jpg" alt="GCS Logo" style="height: 45px; width: auto;">
+    <img src="images/GCS_Logo.jpg" alt="GCS Logo" style="height: 45px; width: auto;">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -338,7 +338,8 @@
                 </div>
                 <div class="contact-form-container animate-fade-up">
                     <!-- Netlify Form integration -->
-                    <form class="contact-form" id="contact-form" method="POST" data-netlify="true">
+                    <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
                         <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" name="name" required>
