@@ -55,10 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let businessAssets = [];
 
     const assetRates = {
-        computers: { label: 'Computers (40% Dep.)', rate: 0.40 },
-        machinery: { label: 'Machinery (15% Dep.)', rate: 0.15 },
-        furniture: { label: 'Furniture (10% Dep.)', rate: 0.10 }
-    };
+    computers: { label: 'Computers (40% Dep.)', rate: 0.40 },
+    furniture: { label: 'Furniture (10% Dep.)', rate: 0.10 }
+};
 
     // DOM Elements for Assets
     const btnAddIndiv = document.getElementById('btn-add-indiv-asset');
