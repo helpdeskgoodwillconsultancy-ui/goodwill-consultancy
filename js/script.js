@@ -82,24 +82,40 @@ const track = document.getElementById('servicesTrack');
 if (track) {
     const dots = document.getElementById('carouselDots');
     const cards = track.querySelectorAll('.service-card');
-    let current = 0;
 
+    // Create navigation dots
     cards.forEach((_, i) => {
         const d = document.createElement('div');
         d.className = 'dot' + (i === 0 ? ' active' : '');
-        d.onclick = () => go(i);
+        d.onclick = () => {
+            const w = cards[0].offsetWidth + 24;
+            track.scrollTo({ left: i * w, behavior: 'smooth' });
+        };
         dots.appendChild(d);
     });
 
-    function go(n) {
-        current = Math.max(0, Math.min(n, cards.length - 1));
-        const w = cards[0].offsetWidth + 24;
-        track.style.transform = `translateX(-${current * w}px)`;
-        dots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    }
+    // Update dots on scroll
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const w = cards[0].offsetWidth + 24;
+            const current = Math.round(track.scrollLeft / w);
+            dots.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === current);
+            });
+        }, 50);
+    });
 
-    document.getElementById('prevBtn').onclick = () => go(current - 1);
-    document.getElementById('nextBtn').onclick = () => go(current + 1);
+    // Navigation buttons
+    document.getElementById('prevBtn').onclick = () => {
+        const w = cards[0].offsetWidth + 24;
+        track.scrollBy({ left: -w, behavior: 'smooth' });
+    };
+    document.getElementById('nextBtn').onclick = () => {
+        const w = cards[0].offsetWidth + 24;
+        track.scrollBy({ left: w, behavior: 'smooth' });
+    };
 }
 
 // Contact Form Submission

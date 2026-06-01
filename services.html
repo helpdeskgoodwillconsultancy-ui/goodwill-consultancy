@@ -6,7 +6,7 @@
     <title>Detailed Services | Goodwill Consultancy Service</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,20 +17,139 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id= G-06ZTJ04V1C"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06ZTJ04V1C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', ' G-06ZTJ04V1C');
+      gtag('config', 'G-06ZTJ04V1C');
     </script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <style>
         .service-detail-section { padding: 5rem 0; }
-        .cta-banner { background: var(--navy); color: white; padding: 3rem; border-radius: 12px; text-align: center; margin-top: 4rem; }
-        .cta-banner h2 { color: var(--gold); margin-bottom: 1rem; }
+        .simplified-services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .simplified-service-card {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--gold);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .simplified-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+        .simplified-service-icon {
+            font-size: 3rem;
+            color: var(--navy);
+            display: inline-block;
+        }
+        .service-header-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .simplified-service-card h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin: 0;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+        .service-tagline-detail {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 500;
+        }
+        .service-body-text {
+            font-size: 1rem;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+        .service-lists-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
+        }
+        .service-list-block {
+            background: var(--cream);
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 3px solid var(--navy);
+        }
+        .service-list-block h4 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+        .service-list-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-list-block li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-list-block li::before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .service-faqs {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .service-faqs h4 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-family: var(--font-heading);
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .faq-a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .service-keywords {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            margin-top: 10px;
+            border-top: 1px dashed #ddd;
+            padding-top: 10px;
+        }
+        .cta-banner { background: var(--navy); color: white; padding: 3.5rem; border-radius: 12px; text-align: center; margin-top: 4rem; }
+        .cta-banner h2 { color: var(--gold); margin-bottom: 1rem; font-family: var(--font-heading); font-size: 2.2rem; }
+        .cta-banner p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem; }
     </style>
 </head>
 <body class="section-light">
@@ -38,10 +157,9 @@
     <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto;">
+                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto; background: transparent;">
                 <div>
-                    <h1 style="line-height: 1.1; color: white;">Goodwill Consultancy</h1>
-                    <p style="color: rgba(255,255,255,0.8);">From Registration to Advisory</p>
+                    <h1 style="line-height: 1.1; color: white; font-weight: 800;">Goodwill Consultancy</h1>
                 </div>
             </a>
             <button class="mobile-toggle" id="mobile-toggle"><i class="ph ph-list"></i></button>
@@ -60,7 +178,7 @@
     <div class="page-header" style="margin-top: 80px;">
         <div class="container">
             <h1>Our Expert Services</h1>
-            <p>From company registration to strategic advisory, we provide full business lifecycles solutions.</p>
+            <p>From company registration to strategic ROC compliance and consulting, we fuel your business journey.</p>
         </div>
     </div>
 
@@ -69,88 +187,423 @@
         <div class="container">
             <div class="simplified-services-grid">
                 
-                <!-- 1. Registration -->
+                <!-- 1. Company Registration Services -->
                 <div class="simplified-service-card" id="registration">
-                    <div class="simplified-service-icon"><i class="ph ph-briefcase"></i></div>
-                    <h3>1. Registration</h3>
-                    <ul>
-                        <li>Company Registration (Pvt Ltd, LLP, OPC, Proprietorship)</li>
-                        <li>ESI Registration</li>
-                        <li>PF Registration</li>
-                        <li>GST Registration</li>
-                        <li>Income Tax Registration & PAN/TAN</li>
-                    </ul>
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-briefcase"></i></div>
+                        <div>
+                            <h3>1. Company Registration Services</h3>
+                            <div class="service-tagline-detail">Start your journey the right way.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        At Goodwill Consultancy Service, we provide seamless company registration services for Private Limited Companies, LLPs, Proprietorships, Partnerships, and One-Person Companies. From name approval to compliance filing, we take care of every legal and procedural detail. A strong business foundation begins with the right entity selection. We guide you through legal structures, tax implications, compliance requirements, and ownership flexibility—ensuring your company is registered in line with your growth vision.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our Process Includes:</h4>
+                            <ul>
+                                <li>Business structure advisory (Pvt Ltd, LLP, OPC, etc.)</li>
+                                <li>Digital Signature Certificates (DSC) & DIN registration</li>
+                                <li>Name approval application & drafting incorporation deeds</li>
+                                <li>PAN, TAN, GST, and MSME registrations</li>
+                                <li>ROC compliance setup & incorporation certificates</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Work With Us?</h4>
+                            <ul>
+                                <li>100% legal clarity & entities tailored to your scale</li>
+                                <li>Zero hassle - we draft and handle all legal papers</li>
+                                <li>Prompt timelines - usually completed in 7-10 working days</li>
+                                <li>Direct liaison with Ministry of Corporate Affairs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Which business structure is best for startups?</div>
+                            <div class="faq-a">– Private Limited Companies are often best for startups seeking funding, while LLPs are good for operational flexibility.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q">How long does company registration take?</div>
+                            <div class="faq-a">– Typically 7–10 working days, subject to government approval times.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: company registration in India, register startup, private limited incorporation, LLP registration services</div>
                 </div>
 
-                <!-- 2. Book-keeping -->
+                <!-- 2. Accounts & Bookkeeping -->
                 <div class="simplified-service-card" id="bookkeeping">
-                    <div class="simplified-service-icon"><i class="ph ph-book-open"></i></div>
-                    <h3>2. Book-keeping</h3>
-                    <ul>
-                        <li>Daily Accounts Maintenance</li>
-                        <li>Invoice Generation & Management</li>
-                        <li>Ledger Maintenance & Reconciliation</li>
-                        <li>Receivables & Payables Tracking</li>
-                    </ul>
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-book-open"></i></div>
+                        <div>
+                            <h3>2. Accounts & Bookkeeping</h3>
+                            <div class="service-tagline-detail">Stay financially sharp with accurate records.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide professional accounting and bookkeeping services that keep your financial data accurate, compliant, and up-to-date. Numbers are not just records; they are the pulse of your business. With our dedicated accounting support, you avoid operational errors and maintain high-grade reports for investors and banks.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>What We Do:</h4>
+                            <ul>
+                                <li>Record daily transactions & receipts</li>
+                                <li>Prepare ledgers, journals, and trial balances</li>
+                                <li>Manage payables, receivables, and invoices</li>
+                                <li>Prepare MIS reports for corporate decision-making</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Benefits for You:</h4>
+                            <ul>
+                                <li>Better financial clarity & audit preparedness</li>
+                                <li>Reduced errors in tax compliance filings</li>
+                                <li>Time-saving for founders to focus on growth</li>
+                                <li>Strategic cash flow maps & analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Can bookkeeping help me save tax?</div>
+                            <div class="faq-a">– Yes, accurate records ensure correct deductions and prevent overpayment or missed legal exemptions.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: online bookkeeping services, bookkeeping in India, bookkeeping for small business, CA accounting firm</div>
                 </div>
 
-                <!-- 3. Taxation -->
+                <!-- 3. Income Tax Filing -->
                 <div class="simplified-service-card" id="taxation">
-                    <div class="simplified-service-icon"><i class="ph ph-coins"></i></div>
-                    <h3>3. Taxation</h3>
-                    <ul>
-                        <li>Income Tax Return (ITR) Filing</li>
-                        <li>GST Filing & Compliance</li>
-                        <li>TDS Deductions & Returns</li>
-                        <li>Property Tax Compliance</li>
-                    </ul>
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-coins"></i></div>
+                        <div>
+                            <h3>3. Income Tax Filing</h3>
+                            <div class="service-tagline-detail">Don’t just file returns, file them smartly.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We offer individual and corporate income tax filing services, ensuring complete compliance while maximizing tax benefits legally. Tax season doesn’t have to be stressful – we make it simple.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Services Covered:</h4>
+                            <ul>
+                                <li>Individual ITR (salaried, consultants, & freelancers)</li>
+                                <li>Business ITR (companies, LLPs, proprietors)</li>
+                                <li>Advance tax planning & computation u/s slabs</li>
+                                <li>Handling tax notices & assessment representation</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Choose Us?</h4>
+                            <ul>
+                                <li>Expert tax planning to reduce overall tax burden</li>
+                                <li>Avoid legal penalties and late filing fees u/s 234F</li>
+                                <li>Personalized approach based on your financial portfolio</li>
+                                <li>Support for capital gains, house property, & business incomes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">What documents are needed to file ITR?</div>
+                            <div class="faq-a">– Form 16, bank statements, investment proofs, business ledgers, and PAN/Aadhaar cards.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q">Can I file ITR late?</div>
+                            <div class="faq-a">– Yes, but late fees and interest penalties apply u/s 234F. It is always better to file before the official deadline.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: Income tax consultant, GST filing services, ITR filing online, tax planning advisor</div>
                 </div>
 
-                <!-- 4. Financial Planning -->
-                <div class="simplified-service-card" id="planning">
-                    <div class="simplified-service-icon"><i class="ph ph-chart-line-up"></i></div>
-                    <h3>4. Financial Planning</h3>
-                    <ul>
-                        <li>Individual Financial & Tax Planning</li>
-                        <li>Corporate Financial Restructuring</li>
-                        <li>Wealth Planning & Management</li>
-                        <li>Tax-Saving Investments Analysis</li>
-                    </ul>
+                <!-- 4. GST Services -->
+                <div class="simplified-service-card" id="gst">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-hand-coins"></i></div>
+                        <div>
+                            <h3>4. GST Services</h3>
+                            <div class="service-tagline-detail">Simplifying GST for your business.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We handle everything from GST registration to monthly return filing, reconciliations, audits, and advisory. GST compliance is not a burden when you have the right partner.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our GST Solutions:</h4>
+                            <ul>
+                                <li>GST registration for new entities</li>
+                                <li>GST monthly/quarterly returns (GSTR-1, GSTR-3B)</li>
+                                <li>GST reconciliation with GSTR-2A/2B for input credit</li>
+                                <li>GST audit, annual filing (GSTR-9), and notice handling</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Your Benefits:</h4>
+                            <ul>
+                                <li>Zero late fees and penalty risks</li>
+                                <li>Smooth Input Tax Credit (ITC) management</li>
+                                <li>Better compliance ratings on the GST portal</li>
+                                <li>Expert support on GST classification and tax rates</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Do all businesses need GST registration?</div>
+                            <div class="faq-a">– Yes, if turnover exceeds ₹40 lakhs (₹20 lakhs for services or businesses in North-Eastern states), or for any interstate business transaction.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: GST filing services, GST registration, GST return filing online, input tax credit reconciliation</div>
                 </div>
 
-                <!-- 5. Reporting -->
-                <div class="simplified-service-card" id="reporting">
-                    <div class="simplified-service-icon"><i class="ph ph-file-text"></i></div>
-                    <h3>5. Reporting</h3>
-                    <ul>
-                        <li>Final Financial Reports & Balance Sheets</li>
-                        <li>Financial Models & Projections</li>
-                        <li class="simplified-service-subheading">CMA Reports & Loan Projection</li>
-                        <ul class="sub-items-list">
-                            <li>Banking & Non-Banking Loan Support</li>
-                            <li>Project Feasibility Documentation</li>
-                        </ul>
-                    </ul>
+                <!-- 5. TDS Filing -->
+                <div class="simplified-service-card" id="tds">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-hash"></i></div>
+                        <div>
+                            <h3>5. TDS Filing</h3>
+                            <div class="service-tagline-detail">Accuracy matters most.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide complete TDS calculation, deduction, and filing services with error-free compliance. TDS compliance today saves you from penalties tomorrow.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>We Cover:</h4>
+                            <ul>
+                                <li>Quarterly TDS return filing (Form 24Q, 26Q, 27Q)</li>
+                                <li>PAN verification of deductees</li>
+                                <li>Online TDS challan payment & reconciliation</li>
+                                <li>Form 16 / 16A generation for employees & contractors</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why TDS Compliance Matters:</h4>
+                            <ul>
+                                <li>Avoids 1% per month late interest on non-deductions</li>
+                                <li>Prevents heavy 1.5% interest on delayed challans</li>
+                                <li>Avoids ₹200/day late filing fees</li>
+                                <li>Ensures smooth tax credits for your suppliers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: TDS filing online, TDS returns quarterly, Form 16 generation, corporate TDS consultant</div>
                 </div>
 
-                <!-- 6. Consultation & Advisory -->
-                <div class="simplified-service-card" id="advisory">
-                    <div class="simplified-service-icon"><i class="ph ph-handshake"></i></div>
-                    <h3>6. Consultation and More (Advisory)</h3>
-                    <ul>
-                        <li>Comes under all service divisions</li>
-                        <li>Strategic Business Consulting</li>
-                        <li>Tax Planning & Legal Structure Advisory</li>
-                        <li>Risk Assessment & Compliance Management</li>
-                    </ul>
+                <!-- 6. CMA Projection -->
+                <div class="simplified-service-card" id="cma">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-file-text"></i></div>
+                        <div>
+                            <h3>6. CMA Projection</h3>
+                            <div class="service-tagline-detail">Get your loan approved with confidence.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We prepare bank-trusted Credit Monitoring Arrangement (CMA) reports and financial loan projections complete with key ratios, cash flow projections, and repayment schedules. Banks and financial institutions evaluate businesses based on these metrics; a well-prepared, professional CMA report increases your loan approval chances dramatically. Strong financials attract stronger funding.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>We Assist In:</h4>
+                            <ul>
+                                <li>Preparing bank-compliant CMA data & projections</li>
+                                <li>Loan documentation consultancy & project reports</li>
+                                <li>Securing working capital & term loans</li>
+                                <li>NBFC & banking loan restructuring support</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Key Metrics We Map:</h4>
+                            <ul>
+                                <li>Debt Service Coverage Ratio (DSCR)</li>
+                                <li>Current Ratio & Quick Ratio</li>
+                                <li>Funds Flow & Cash Flow projections</li>
+                                <li>Break-Even analysis & profitability metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: CMA report preparation, loan projection report, bank project report, business loan support</div>
+                </div>
+
+                <!-- 7. Financial Analysis -->
+                <div class="simplified-service-card" id="financial-analysis">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-chart-line-up"></i></div>
+                        <div>
+                            <h3>7. Financial Analysis</h3>
+                            <div class="service-tagline-detail">Secure your future with smart planning.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide personalized financial planning, tax planning, wealth creation strategies, and professional report preparation (including MIS, P&Ls, and balance sheets) for management and investors. A goal without a plan is just a wish. We merge financial report prep and strategic investment advisory into a single, comprehensive layout to give you and your investors complete financial foresight.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>What We Cover:</h4>
+                            <ul>
+                                <li>Individual & Corporate Tax Planning maps</li>
+                                <li>Preparation of professional P&L, Balance Sheets, & Cash flows</li>
+                                <li>Wealth creation & tax-saving investment advisory</li>
+                                <li>Monthly Management Information Systems (MIS) preparation</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Strategic Benefits:</h4>
+                            <ul>
+                                <li>Clear overall view of your business's health</li>
+                                <li>Investor-ready financial decks & audited records</li>
+                                <li>Custom tax savings maps u/s 80C, 80D, etc.</li>
+                                <li>Long-term capital growth and risk mitigation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: wealth planning advisor, corporate financial analysis, MIS reports preparation, P&L statement service</div>
+                </div>
+
+                <!-- 8. ROC Compliance -->
+                <div class="simplified-service-card" id="roc">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-file-shield"></i></div>
+                        <div>
+                            <h3>8. ROC Compliance</h3>
+                            <div class="service-tagline-detail">Stay compliant, stay confident.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        Every registered company in India must file its annual financial statements and corporate returns with the Registrar of Companies (ROC) each year. ROC Compliance is the legal requirement to report your company's financial activities and structural changes (like changes in directors, share capital, or registered office address) to the government. We simplify this complex legal chore by handling all your annual filings, board resolutions, and statutory registers. By staying fully compliant, your business avoids heavy government penalties, legal audits, and remains in good standing for future expansions or fundraising.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our ROC Solutions Include:</h4>
+                            <ul>
+                                <li>Filing Annual Returns (Form MGT-7) & Financials (Form AOC-4)</li>
+                                <li>Drafting board resolutions & minutes of meetings</li>
+                                <li>Director addition / resignation filings (DIR-12)</li>
+                                <li>Share allotment & transfer documentation</li>
+                                <li>Maintaining statutory company registers u/s Companies Act</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Direct Compliances are Critical:</h4>
+                            <ul>
+                                <li>Avoids ₹100/day per form penalty for late filings</li>
+                                <li>Prevents directors from being disqualified u/s 164</li>
+                                <li>Maintains "Active" company status on MCA database</li>
+                                <li>Builds solid credentials for capital raising</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: ROC filing online, ROC annual compliance, company law consultant, MCA return filing</div>
+                </div>
+
+                <!-- 9. Business Consulting -->
+                <div class="simplified-service-card" id="consulting">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-chats-teardrop"></i></div>
+                        <div>
+                            <h3>9. Business Consulting</h3>
+                            <div class="service-tagline-detail">Business growth is not by chance, it’s by choice – and strategy.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        Business Consulting is expert, professional guidance designed to help your business solve operational bottlenecks, structure its financials, and build long-term expansion strategies. Whether you are a brand-new startup drafting a business plan or an established firm planning to scale operations, our experienced advisors provide critical insights on tax efficiency, market positioning, cost reduction, and capital structuring. We act as your external strategic partners, turning complex challenges into actionable pathways for sustainable growth and success.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>How We Advise Your Business:</h4>
+                            <ul>
+                                <li>Startup business modeling & legal structuring maps</li>
+                                <li>Cost optimization & cash flow efficiency audits</li>
+                                <li>Tax-efficient transaction and capital advisory</li>
+                                <li>Risk assessments, scaling maps, & exit strategies</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Our Consulting Process:</h4>
+                            <ul>
+                                <li>1. In-depth analysis of your operational metrics</li>
+                                <li>2. Identifying bottlenecks & tax-saving leakages</li>
+                                <li>3. Drafting a simplified strategic optimization guide</li>
+                                <li>4. Collaborative implementation and tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: best business consulting firm, startup business advisor, corporate tax strategist, company scaling consulting</div>
                 </div>
 
             </div>
 
-            <div class="cta-banner">
+            <div class="cta-banner animate-fade-up">
                 <h2>Your Growth is Our Goodwill</h2>
-                <p>Need a customized solution or want to discuss your requirements?</p>
-                <a href="index.html#contact" class="btn btn-primary mt-1">Book a Free Consultation Today</a>
+                <p>Need a customized solution or want to discuss your requirements? Our experts are here to help.</p>
+                <a href="index.html#contact" class="btn btn-primary">Book a Free Consultation Today &rarr;</a>
             </div>
 
         </div>
@@ -167,8 +620,9 @@
             <p>&copy; 2025 Goodwill Consultancy Service. All rights reserved.</p>
             <div class="footer-social-icons">
                 <a href="https://wa.me/919363476100" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                <a href="mailto:info@goodwillconsultancy.in" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                <a href="mailto:info@goodwillconsultancyservice.com" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
                 <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
             </div>
         </div>
     </footer>

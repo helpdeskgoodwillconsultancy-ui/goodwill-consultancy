@@ -6,7 +6,7 @@
     <title>Income Tax Cal (FY 2024-25) | Goodwill Consultancy</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +17,12 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id= G-06ZTJ04V1C"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06ZTJ04V1C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', ' G-06ZTJ04V1C');
+      gtag('config', 'G-06ZTJ04V1C');
     </script>
 
     <!-- Styles -->
@@ -34,10 +34,9 @@
     <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto;">
+                <img src="logo.png" alt="GCS Logo" style="height: 45px; width: auto; background: transparent;">
                 <div>
-                    <h1 style="line-height: 1.1; color: white;">Goodwill Consultancy</h1>
-                    <p style="color: rgba(255,255,255,0.8);">From Registration to Advisory</p>
+                    <h1 style="line-height: 1.1; color: white; font-weight: 800;">Goodwill Consultancy</h1>
                 </div>
             </a>
             
@@ -92,7 +91,7 @@
                             <div class="form-group">
                                 <label>Age Group</label>
                                 <select id="indiv-age">
-                                    <option value="&lt;60">Below 60 Years</option>
+                                    <option value="<60">Below 60 Years</option>
                                     <option value="60-80">Senior Citizen (60-80 Years)</option>
                                     <option value="80+">Super Senior (80+ Years)</option>
                                 </select>
@@ -105,19 +104,35 @@
                             </div>
 
                             <!-- Asset Portal Section (Income Tax Portal rules) -->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Add Asset (Income Tax Portal)</label>
-                                    <select id="indiv-asset-type">
-                                        <option value="none">No Asset Added</option>
+                            <div class="form-row" style="align-items: flex-end; gap: 10px; margin-top: 20px;">
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Asset Block</label>
+                                    <select id="indiv-asset-type" style="padding: 12px 15px;">
                                         <option value="computers">Computers & Software (40% Dep.)</option>
                                         <option value="machinery">Plant & Machinery (15% Dep.)</option>
                                         <option value="furniture">Furniture & Buildings (10% Dep.)</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Asset Purchase Value (₹)</label>
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Asset Name</label>
+                                    <input type="text" id="indiv-asset-name" placeholder="e.g. Office PC">
+                                </div>
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Purchase Value (₹)</label>
                                     <input type="number" id="indiv-asset-value" placeholder="e.g. 50000" min="0">
+                                </div>
+                                <div class="form-group" style="flex: 0.8; margin-bottom: 0;">
+                                    <button type="button" class="btn btn-navy-gold" id="btn-add-indiv-asset" style="height: 48px; width: 100%; padding: 0; display: flex; align-items: center; justify-content: center;"><i class="ph ph-plus-circle" style="font-size: 1.4rem;"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div id="indiv-asset-list-container" class="asset-inventory-container" style="display: none;">
+                                <div class="asset-inventory-title">
+                                    <span>Added Assets Inventory</span>
+                                    <span id="indiv-asset-count" class="asset-badge">0 Assets</span>
+                                </div>
+                                <div class="asset-inventory-list" id="indiv-asset-list">
+                                    <!-- JS Injected -->
                                 </div>
                             </div>
                         </div>
@@ -156,35 +171,54 @@
                             </div>
                             
                             <div class="form-group">
-                                <label>Business Type</label>
+                                <label>Entity Type</label>
                                 <select id="biz-type">
-                                    <option value="pvt">Private Limited Company</option>
-                                    <option value="llp">Limited Liability Partnership (LLP)</option>
-                                    <option value="proprietorship">Proprietorship / Individual</option>
-                                    <option value="newmfg">New Manufacturing Co. (115BAB)</option>
+                                    <option value="pvt">Domestic Company</option>
+                                    <option value="llp">LLP / Partnership Firm</option>
+                                    <option value="proprietorship">Proprietorship</option>
+                                    <option value="compf">Foreign Company</option>
+                                    <option value="coop">Co-operative Society (General)</option>
+                                    <option value="coop115bad">Co-op Society (u/s 115BAD)</option>
+                                    <option value="coop115bae">Co-op Society (u/s 115BAE)</option>
                                 </select>
                             </div>
                             
                             <div class="form-group">
-                                <label>Gross Turnover / Receipts (₹)</label>
+                                <label>Gross Annual Turnover (₹)</label>
                                 <input type="number" id="biz-turnover" placeholder="e.g. 10000000" min="0">
-                                <span class="help-text">Used to determine surcharge and applicable corporate tax rates.</span>
+                                <span class="help-text">Required to compute Domestic Company tax rates.</span>
                             </div>
 
                             <!-- Asset Portal Section (Income Tax Portal rules) -->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Add Asset (Income Tax Portal)</label>
-                                    <select id="biz-asset-type">
-                                        <option value="none">No Asset Added</option>
+                            <div class="form-row" style="align-items: flex-end; gap: 10px; margin-top: 20px;">
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Asset Block</label>
+                                    <select id="biz-asset-type" style="padding: 12px 15px;">
                                         <option value="computers">Computers & Software (40% Dep.)</option>
                                         <option value="machinery">Plant & Machinery (15% Dep.)</option>
                                         <option value="furniture">Furniture & Buildings (10% Dep.)</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Asset Purchase Value (₹)</label>
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Asset Name</label>
+                                    <input type="text" id="biz-asset-name" placeholder="e.g. Office Desk">
+                                </div>
+                                <div class="form-group" style="flex: 2;">
+                                    <label>Purchase Value (₹)</label>
                                     <input type="number" id="biz-asset-value" placeholder="e.g. 200000" min="0">
+                                </div>
+                                <div class="form-group" style="flex: 0.8; margin-bottom: 0;">
+                                    <button type="button" class="btn btn-navy-gold" id="btn-add-biz-asset" style="height: 48px; width: 100%; padding: 0; display: flex; align-items: center; justify-content: center;"><i class="ph ph-plus-circle" style="font-size: 1.4rem;"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div id="biz-asset-list-container" class="asset-inventory-container" style="display: none;">
+                                <div class="asset-inventory-title">
+                                    <span>Added Assets Inventory</span>
+                                    <span id="biz-asset-count" class="asset-badge">0 Assets</span>
+                                </div>
+                                <div class="asset-inventory-list" id="biz-asset-list">
+                                    <!-- JS Injected -->
                                 </div>
                             </div>
                         </div>
@@ -215,7 +249,7 @@
                 
                 <!-- Calculator Disclaimer -->
                 <div class="calc-disclaimer">
-                    Tax limit is not subjected to actual returns, book with us to attain true results
+                    <strong>Legal Disclaimer:</strong> This calculator is for illustrative purposes only and provides a simplified estimation based on standard tax rates. It does not constitute formal tax or legal advice. Actual tax liabilities are subject to individual deductions, exemptions, and official government assessments. Please book a free consultation with our expert CA team at Goodwill Consultancy to secure verified tax results.
                 </div>
             </div>
         </div>
@@ -232,8 +266,9 @@
             <p>&copy; 2025 Goodwill Consultancy Service. All rights reserved.</p>
             <div class="footer-social-icons">
                 <a href="https://wa.me/919363476100" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                <a href="mailto:info@goodwillconsultancy.in" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
+                <a href="mailto:info@goodwillconsultancyservice.com" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
                 <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
             </div>
         </div>
     </footer>

@@ -139,3 +139,82 @@
     margin-top: 5px;
     display: block;
 }
+
+/* Dynamic Asset Inventory List */
+.asset-inventory-container {
+    margin-top: 20px;
+    background: var(--white);
+    padding: 15px;
+    border-radius: var(--radius);
+    border: 1px solid #eef0f3;
+}
+.asset-inventory-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.asset-inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.asset-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--cream);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--navy);
+    border-left: 3px solid var(--gold);
+}
+.asset-item-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.asset-badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--navy);
+    color: var(--gold);
+}
+.btn-delete-asset {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+.btn-delete-asset:hover {
+    background: rgba(255, 77, 77, 0.1);
+}
+.btn-add-asset {
+    padding: 10px 15px;
+    background: var(--navy);
+    color: var(--gold);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 10px;
+    font-family: var(--font-body);
+}
+.btn-add-asset:hover {
+    background: var(--navy-light);
+}

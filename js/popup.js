@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contact: {}
     };
 
-    if (!isCompleted && shownCount < 3 && !shownThisSession) {
+    if (!isCompleted && shownCount < 1 && !shownThisSession) {
         setTimeout(() => {
             showPopup();
             shownCount++;
@@ -170,21 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </form>
             `;
         } else if (currentStep === 7) {
-            // Results
-            const results = calculateScore();
+            // Success Screen
             html += `
-                <div class="text-center">
-                    <h3 class="mb-1">Your Business Readiness Score</h3>
-                    <div class="score-circle mb-1">${results.score}<span>/100</span></div>
-                    <span class="badge ${results.badgeClass} mb-2">${results.priorityLevel}</span>
-                    
-                    <h4 class="mb-1 mt-1">Recommended Services for You:</h4>
-                    <ul class="recommended-list mb-2 text-left" style="display:inline-block; text-align:left;">
-                        ${formData.services.slice(0,3).map(s => `<li><i class="ph-fill ph-check-circle text-gold"></i> ${s}</li>`).join('')}
-                        ${formData.services.length === 0 ? '<li><i class="ph-fill ph-check-circle text-gold"></i> Comprehensive Business Audit</li>' : ''}
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-navy-gold w-100" onclick="document.getElementById('popup-close').click()">Get personalised guidance from Goodwill Consultancy &rarr;</a>
+                <div class="text-center" style="padding: 20px 0;">
+                    <i class="ph-fill ph-check-circle" style="font-size: 5rem; color: var(--gold); margin-bottom: 20px; display: inline-block;"></i>
+                    <h3 class="mb-1" style="font-family: var(--font-heading); color: var(--navy); font-size: 2rem;">Thank You!</h3>
+                    <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 30px; font-weight: 500;">Our team will get back to you soon!</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('popup-close').click()" style="padding: 10px 30px;">Done</button>
                 </div>
             `;
             
