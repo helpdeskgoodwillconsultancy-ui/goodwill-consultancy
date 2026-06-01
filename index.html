@@ -132,51 +132,35 @@
         </div>
     </section>
 
-    <!-- Services Preview -->
-    <section class="section-navy">
-        <div class="container">
-            <div class="section-header text-center animate-fade-up">
-                <h2 style="color: white;">Our Services</h2>
-                <p style="color: rgba(255,255,255,0.8);">A complete suite of financial, tax, legal, and advisory services designed for startups and growing enterprises.</p>
-            </div>
-            
-            <div class="services-preview-grid animate-fade-up">
-                <div class="service-preview-card">
-                    <h4>1. Registration</h4>
-                    <p>Company, ESI, PF, GST, Income tax</p>
-                    <a href="services.html#registration">Learn More &rarr;</a>
-                </div>
-                <div class="service-preview-card">
-                    <h4>2. Book-keeping</h4>
-                    <p>Accounts, invoice</p>
-                    <a href="services.html#bookkeeping">Learn More &rarr;</a>
-                </div>
-                <div class="service-preview-card">
-                    <h4>3. Taxation</h4>
-                    <p>Income tax, GST, TDS, Property</p>
-                    <a href="services.html#taxation">Learn More &rarr;</a>
-                </div>
-                <div class="service-preview-card">
-                    <h4>4. Financial Planning</h4>
-                    <p>Individual, Company</p>
-                    <a href="services.html#planning">Learn More &rarr;</a>
-                </div>
-                <div class="service-preview-card">
-                    <h4>5. Reporting</h4>
-                    <p>Final report, Financial Model</p>
-                    <a href="services.html#reporting">Learn More &rarr;</a>
-                </div>
-                <div class="service-preview-card">
-                    <h4>6. Consultation & Advisory</h4>
-                    <p>Strategic advisory across all areas</p>
-                    <a href="services.html#advisory">Learn More &rarr;</a>
-                </div>
-            </div>
-            <div class="text-center mt-3">
-                <a href="services.html" class="btn btn-primary">View All Services &rarr;</a>
-            </div>
+  <!-- Services Carousel -->
+<section class="section-navy">
+    <div class="container">
+        <div class="section-header text-center animate-fade-up">
+            <h2 style="color: white;">Our Services</h2>
+            <p style="color: rgba(255,255,255,0.8);">A complete suite of financial, tax, legal, and advisory services.</p>
         </div>
-    </section>
+
+        <div class="carousel-wrap animate-fade-up">
+            <div class="carousel-track" id="servicesTrack">
+                <div class="service-card"><div class="svc-num">01</div><h4>Registration</h4><p>Company, ESI, PF, GST, Income tax</p><a href="services.html#registration">Learn More →</a></div>
+                <div class="service-card"><div class="svc-num">02</div><h4>Book-keeping</h4><p>Accounts, invoice management</p><a href="services.html#bookkeeping">Learn More →</a></div>
+                <div class="service-card"><div class="svc-num">03</div><h4>Taxation</h4><p>Income tax, GST, TDS, Property</p><a href="services.html#taxation">Learn More →</a></div>
+                <div class="service-card"><div class="svc-num">04</div><h4>Financial Planning</h4><p>Individual and company planning</p><a href="services.html#planning">Learn More →</a></div>
+                <div class="service-card"><div class="svc-num">05</div><h4>Reporting</h4><p>Final report, Financial Model</p><a href="services.html#reporting">Learn More →</a></div>
+                <div class="service-card"><div class="svc-num">06</div><h4>Consultation & Advisory</h4><p>Strategic advisory across all areas</p><a href="services.html#advisory">Learn More →</a></div>
+            </div>
+            <div class="carousel-btns">
+                <button id="prevBtn">&#8592;</button>
+                <button id="nextBtn">&#8594;</button>
+            </div>
+            <div class="dots" id="carouselDots"></div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="services.html" class="btn btn-primary">View All Services →</a>
+        </div>
+    </div>
+</section>
 
     <!-- Why Choose Us -->
     <section id="why-us" class="section-light">
