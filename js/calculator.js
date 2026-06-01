@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const indivInputs = ['indiv-income', 'indiv-age', 'indiv-deductions', 'indiv-asset-type', 'indiv-asset-value'];
+    const indivInputs = ['indiv-income', 'indiv-age', 'indiv-deductions', 'indiv-computers', 'indiv-computers-value', 'indiv-machinery', 'indiv-machinery-value', 'indiv-furniture', 'indiv-  furniture-value'];
     indivInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -75,12 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const assetValueEl = document.getElementById('indiv-asset-value');
         const assetValue = parseFloat(assetValueEl ? assetValueEl.value : 0) || 0;
         
-        let depreciationRate = 0;
-        if (assetType === 'computers') depreciationRate = 0.40;
-        else if (assetType === 'machinery') depreciationRate = 0.15;
-        else if (assetType === 'furniture' || assetType === 'buildings') depreciationRate = 0.10;
-        
-        const depreciation = assetValue * depreciationRate;
+        let depreciation = 0;
+        const assetRates = { computers: 0.40, machinery: 0.15, furniture: 0.10 };
+        ['computers', 'machinery', 'furniture'].forEach(type => {
+        const checkbox = document.getElementById('indiv-' + type);
+        const valueInput = document.getElementById('indiv-' + type + '-value');
+        if (checkbox && checkbox.checked && valueInput) {
+        const val = parseFloat(valueInput.value) || 0;
+        depreciation += val * assetRates[type];
+    }
+});
         
         let standardDeduction = currentRegime === 'new' ? 75000 : 50000;
         
@@ -150,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Business Logic
-    const bizInputs = ['biz-profit', 'biz-type', 'biz-turnover', 'biz-asset-type', 'biz-asset-value'];
+    const bizInputs = ['biz-profit', 'biz-type', 'biz-turnover', 'biz-computers', 'biz-computers-value', 'biz-machinery', 'biz-machinery-value', 'biz-furniture', 'biz-furniture-value'];
     bizInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -174,10 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const assetValueEl = document.getElementById('biz-asset-value');
         const assetValue = parseFloat(assetValueEl ? assetValueEl.value : 0) || 0;
         
-        let depreciationRate = 0;
-        if (assetType === 'computers') depreciationRate = 0.40;
-        else if (assetType === 'machinery') depreciationRate = 0.15;
-        else if (assetType === 'furniture' || assetType === 'buildings') depreciationRate = 0.10;
+        let depreciation = 0;
+        const assetRates = { computers: 0.40, machinery: 0.15, furniture: 0.10 };
+        ['computers', 'machinery', 'furniture'].forEach(type => {
+        const checkbox = document.getElementById('biz-' + type);
+        const valueInput = document.getElementById('biz-' + type + '-value');
+        if (checkbox && checkbox.checked && valueInput) {
+        const val = parseFloat(valueInput.value) || 0;
+        depreciation += val * assetRates[type];
+    }
+});
         
         const depreciation = assetValue * depreciationRate;
         const taxableProfit = Math.max(0, profit - depreciation);
