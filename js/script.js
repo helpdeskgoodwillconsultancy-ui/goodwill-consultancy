@@ -76,3 +76,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedElements.forEach(el => observer.observe(el));
 });
+
+// Services Carousel
+const track = document.getElementById('servicesTrack');
+if (track) {
+    const dots = document.getElementById('carouselDots');
+    const cards = track.querySelectorAll('.service-card');
+    let current = 0;
+
+    cards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => go(i);
+        dots.appendChild(d);
+    });
+
+    function go(n) {
+        current = Math.max(0, Math.min(n, cards.length - 1));
+        const w = cards[0].offsetWidth + 24;
+        track.style.transform = `translateX(-${current * w}px)`;
+        dots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('prevBtn').onclick = () => go(current - 1);
+    document.getElementById('nextBtn').onclick = () => go(current + 1);
+}
