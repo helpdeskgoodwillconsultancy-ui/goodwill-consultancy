@@ -101,3 +101,32 @@ if (track) {
     document.getElementById('prevBtn').onclick = () => go(current - 1);
     document.getElementById('nextBtn').onclick = () => go(current + 1);
 }
+
+// Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: contactForm.querySelector('[name="name"]').value,
+            email: contactForm.querySelector('[name="email"]').value,
+            phone: contactForm.querySelector('[name="phone"]').value,
+            service: contactForm.querySelector('[name="service"]').value,
+            message: contactForm.querySelector('[name="message"]').value
+        };
+
+        fetch('https://script.google.com/macros/s/AKfycbw5DwFAlRINSP8p3XBK54NOGRLLo5T4p4AJnpZENYxsrDcjt750Qiz8w0dt1xjy_18EQw/exec', {
+            method: 'POST',
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            contactForm.reset();
+            alert('✅ Message sent! We will get back to you soon.');
+        })
+        .catch(error => {
+            alert('❌ Something went wrong. Please try again.');
+        });
+    });
+}
