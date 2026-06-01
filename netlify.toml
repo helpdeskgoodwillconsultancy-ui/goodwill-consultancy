@@ -1,5 +1,4 @@
 [build]
-  command = "echo 'Building...'"
   publish = "."
 
 [[redirects]]
@@ -12,3 +11,4 @@
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    Cache-Control = "public, max-age=3600"
