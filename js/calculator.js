@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateIndividual() {
         const grossInput = document.getElementById('indiv-income');
-        if (!grossInput) return; // Exit if individual calculator is not on the page
+        if (!grossInput) return;
         
         const gross = parseFloat(grossInput.value) || 0;
         const ageEl = document.getElementById('indiv-age');
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dedEl = document.getElementById('indiv-deductions');
         const deductions = currentRegime === 'old' ? (parseFloat(dedEl ? dedEl.value : 0) || 0) : 0;
         
-        // Asset calculations
         const assetTypeEl = document.getElementById('indiv-asset-type');
         const assetType = assetTypeEl ? assetTypeEl.value : 'none';
         const assetValueEl = document.getElementById('indiv-asset-value');
@@ -91,19 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let tax = 0;
         
         if (currentRegime === 'new') {
-            // New Regime Slabs
             if (taxable > 1500000) tax += (taxable - 1500000) * 0.30 + 150000;
             else if (taxable > 1200000) tax += (taxable - 1200000) * 0.20 + 90000;
             else if (taxable > 1000000) tax += (taxable - 1000000) * 0.15 + 60000;
             else if (taxable > 700000) tax += (taxable - 700000) * 0.10 + 20000;
             else if (taxable > 300000) tax += (taxable - 300000) * 0.05;
 
-            // 87A Rebate
             if (taxable <= 700000) {
                 tax = Math.max(0, tax - 25000);
             }
         } else {
-            // Old Regime Slabs
             let exemption = 250000;
             if (age === '60-80') exemption = 300000;
             if (age === '80+') exemption = 500000;
@@ -119,13 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 tax += (taxable - exemption) * 0.05;
             }
 
-            // 87A Rebate
             if (taxable <= 500000) {
                 tax = Math.max(0, tax - 12500);
             }
         }
 
-        // Surcharge
         let surcharge = 0;
         if (taxable > 20000000) surcharge = tax * 0.25;
         else if (taxable > 10000000) surcharge = tax * 0.15;
@@ -167,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateBusiness() {
         const profitInput = document.getElementById('biz-profit');
-        if (!profitInput) return; // Exit if business calculator is not on page
+        if (!profitInput) return;
         
         const profit = parseFloat(profitInput.value) || 0;
         const typeEl = document.getElementById('biz-type');
@@ -175,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const turnoverEl = document.getElementById('biz-turnover');
         const turnover = parseFloat(turnoverEl ? turnoverEl.value : 0) || 0;
 
-        // Asset calculations
         const assetTypeEl = document.getElementById('biz-asset-type');
         const assetType = assetTypeEl ? assetTypeEl.value : 'none';
         const assetValueEl = document.getElementById('biz-asset-value');
@@ -194,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let showMat = false;
 
         if (type === 'proprietorship') {
-            // Proprietorship: old individual regime slabs applied to profit
             if (taxableProfit > 1000000) tax = (taxableProfit - 1000000) * 0.30 + 112500;
             else if (taxableProfit > 500000) tax = (taxableProfit - 500000) * 0.20 + 12500;
             else if (taxableProfit > 250000) tax = (taxableProfit - 250000) * 0.05;
@@ -206,15 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tax = taxableProfit * 0.30;
             if (taxableProfit > 10000000) surcharge = tax * 0.12;
             showMat = true;
-        } else if (type === 'newmfg') {
-            tax = taxableProfit * 0.15;
-            surcharge = tax * 0.10; // Flat 10%
         } else {
-            // Pvt Ltd Company
-            let rate = (turnover <= 400000000) ? 0.25 : 0.30; // 400 Cr (updated to 40 Cr/400 Cr check)
+            let rate = (turnover <= 400000000) ? 0.25 : 0.30;
             tax = taxableProfit * rate;
-            if (taxableProfit > 100000000) surcharge = tax * 0.12; // 10 Cr
-            else if (taxableProfit > 10000000) surcharge = tax * 0.07; // 1 Cr
+            if (taxableProfit > 100000000) surcharge = tax * 0.12;
+            else if (taxableProfit > 10000000) surcharge = tax * 0.07;
             showMat = true;
         }
 
@@ -248,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initial calculations if elements are on page
     calculateIndividual();
     calculateBusiness();
 });
