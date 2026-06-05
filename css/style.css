@@ -809,6 +809,13 @@ section {
     color: var(--white);
 }
 
+.floating-socials { position: fixed; bottom: 2rem; right: 1.5rem; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+.float-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+.float-btn:hover { transform: scale(1.15); }
+.float-btn.whatsapp { background: #25D366; }
+.float-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.float-btn.linkedin { background: #0077B5; }
+
 /* Footer Social Icons Grid */
 .footer-social-icons {
     display: flex;
