@@ -28,66 +28,32 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/calculator.css">
     <style>
-        /* ── Mission/Vision ── */
+        /* Mission/Vision */
         .mission-vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .mv-card { padding: 2rem; background: var(--white); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: var(--shadow); }
+        .mv-card { padding: 2rem; background: var(--white); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: var(--shadow); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .mv-card:hover { transform: perspective(600px) rotateY(3deg) translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
 
-        /* ── 3D Card Effects ── */
-        .service-card {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-        }
-        .service-card:hover {
-            transform: perspective(800px) rotateY(-5deg) rotateX(3deg) translateY(-8px);
-            box-shadow: 8px 16px 32px rgba(0,0,0,0.18);
-        }
-        .why-card {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .why-card:hover {
-            transform: perspective(600px) rotateX(5deg) translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-        }
-        .mv-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .mv-card:hover {
-            transform: perspective(600px) rotateY(3deg) translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
+        /* Hero Carousel */
+        .hero { position: relative; overflow: hidden; }
+        .hero-bg-carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .hero-bg-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .hero-bg-slide.active { opacity: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.65) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; }
 
-        /* ── Hero Parallax ── */
-        .hero { transform-style: preserve-3d; }
-        .hero-overlay { transform: translateZ(-1px) scale(1.05); }
+        /* 3D Card Effects */
+        .service-card { transform-style: preserve-3d; transition: transform 0.4s ease, box-shadow 0.4s ease; cursor: pointer; }
+        .service-card:hover { transform: perspective(800px) rotateY(-5deg) rotateX(3deg) translateY(-8px); box-shadow: 8px 16px 32px rgba(0,0,0,0.18); }
+        .why-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .why-card:hover { transform: perspective(600px) rotateX(5deg) translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
 
-        /* ── Floating particles ── */
-        .particles-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-        .particle {
-            position: absolute; border-radius: 50%;
-            background: rgba(184,115,51,0.08);
-            animation: floatParticle linear infinite;
-        }
+        /* Floating Particles */
+        .particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .particle { position: absolute; border-radius: 50%; background: rgba(184,115,51,0.08); animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
 
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
-        }
-
-        /* ── Tax Slab Table ── */
-        .slab-toggle {
-            font-size: 0.85rem; color: var(--gold); cursor: pointer;
-            margin-top: 1rem; display: inline-flex; align-items: center;
-            gap: 6px; font-weight: 500; user-select: none;
-            padding: 6px 12px; border: 1px solid var(--gold);
-            border-radius: 20px; transition: all 0.2s ease;
-        }
+        /* Tax Slab Table */
+        .slab-toggle { font-size: 0.85rem; color: var(--gold); cursor: pointer; margin-top: 1rem; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; user-select: none; padding: 6px 12px; border: 1px solid var(--gold); border-radius: 20px; transition: all 0.2s ease; }
         .slab-toggle:hover { background: var(--gold); color: white; }
         .slab-container { display: none; margin-top: 1rem; }
         .slab-container.open { display: block; }
@@ -97,29 +63,37 @@
         .tax-slab-table tr:nth-child(even) td { background: #f8f4ee; }
         .tax-slab-table .slab-note td { font-size: 0.78rem; color: var(--text-muted); background: #fffbf5 !important; font-style: italic; }
 
-        /* ── Contact Social Icons ── */
+        /* Contact Social Icons */
         .contact-social-icons { display: flex; gap: 14px; margin-top: 1.5rem; flex-wrap: wrap; }
-        .contact-social-btn {
-            width: 52px; height: 52px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: white; text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+        .contact-social-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: white; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .contact-social-btn:hover { transform: scale(1.2) translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
         .contact-social-btn.whatsapp { background: #25D366; animation: floatIcon 3s ease-in-out infinite; }
         .contact-social-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); animation: floatIcon 3s ease-in-out infinite 0.3s; }
         .contact-social-btn.linkedin { background: #0077B5; animation: floatIcon 3s ease-in-out infinite 0.6s; }
         .contact-social-btn.email { background: var(--navy); animation: floatIcon 3s ease-in-out infinite 0.9s; }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* ── Star ratings ── */
+        /* Star Ratings */
         .star-full { color: #f5a623; }
         .star-half { color: #f5a623; }
         .star-empty { color: #ddd; }
+
+        /* Floating Social Sidebar */
+        .floating-socials { position: fixed; bottom: 2rem; right: 1.5rem; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+        .float-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+        .float-btn:hover { transform: scale(1.15); }
+        .float-btn.whatsapp { background: #25D366; }
+        .float-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+        .float-btn.linkedin { background: #0077B5; }
+
+        /* Footer Grid */
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 3rem 0 1rem; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .footer-col ul li a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: center; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -150,8 +124,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Background Carousel -->
     <section id="home" class="hero">
+        <div class="hero-bg-carousel" id="heroBgCarousel">
+            <div class="hero-bg-slide active" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80');"></div>
+            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80');"></div>
+            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=80');"></div>
+            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80');"></div>
+            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80');"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <div class="hero-text animate-fade-up">
@@ -257,7 +238,6 @@
                                 <div class="regime-toggle" id="regime-old">Old Regime</div>
                             </div>
 
-                            <!-- Slab Toggle -->
                             <span class="slab-toggle" id="toggle-slabs">📊 View Tax Slabs ▼</span>
                             <div class="slab-container" id="slab-container">
                                 <div id="new-regime-slabs">
@@ -271,7 +251,7 @@
                                             <tr><td>₹16,00,001 – ₹20,00,000</td><td>20%</td><td>New Regime Slab</td></tr>
                                             <tr><td>₹20,00,001 – ₹24,00,000</td><td>25%</td><td>New Regime Slab</td></tr>
                                             <tr><td>Above ₹24,00,000</td><td>30%</td><td>New Regime Slab</td></tr>
-                                            <tr class="slab-note"><td colspan="3">✅ Rebate u/s 87A: Zero tax up to ₹12L &nbsp;|&nbsp; Standard Deduction u/s 16: ₹75,000 &nbsp;|&nbsp; Surcharge capped at 25% for new regime</td></tr>
+                                            <tr class="slab-note"><td colspan="3">✅ Rebate u/s 87A: Zero tax up to ₹12L &nbsp;|&nbsp; Standard Deduction u/s 16: ₹75,000 &nbsp;|&nbsp; Surcharge capped at 25%</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -363,107 +343,66 @@
                 <p>Hear from businesses and individuals who trust Goodwill Consultancy.</p>
             </div>
             <div class="testimonials-grid animate-fade-up">
-
-                <!-- 5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
                     <p class="testimonial-text">"Anna, honestly GCS is too good. They registered our company within one week only. No tension, no running around. Everything they handled properly."</p>
                     <div class="testimonial-name">Ranganathan S., Chennai</div>
                 </div>
-
-                <!-- 4 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
-                    <p class="testimonial-text">"I was so confused about GST filing. These people explained everything simply and filed on time. No last minute panic. Very satisfied! Would have been 5 stars but took a little time."</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
+                    <p class="testimonial-text">"I was so confused about GST filing. These people explained everything simply and filed on time. No last minute panic at all. Very satisfied! Would have been 5 stars but took a little time initially."</p>
                     <div class="testimonial-name">Anitha K., Coimbatore</div>
                 </div>
-
-                <!-- 5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Bank loan was getting rejected again and again. GCS prepared the CMA report and within two weeks our loan got approved. Super happy!"</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
+                    <p class="testimonial-text">"Bank loan was getting rejected again and again. GCS prepared the CMA report and within two weeks our loan got approved. Super happy with the result!"</p>
                     <div class="testimonial-name">Elango T., Madurai</div>
                 </div>
-
-                <!-- 4.5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i>
-                    </div>
-                    <p class="testimonial-text">"I do freelance work so tax filing was always a headache for me. GCS made it so simple and even helped me save more money. Will definitely come back next year!"</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i></div>
+                    <p class="testimonial-text">"I do freelance work so tax filing was always a headache. GCS made it so simple and even helped me save more money. Will definitely come back next year!"</p>
                     <div class="testimonial-name">Kavin S., Bangalore</div>
                 </div>
-
-                <!-- 5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"ROC compliance was giving us so much stress every year. Now GCS takes care of everything. We just focus on our business. No more late fees at all!"</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
+                    <p class="testimonial-text">"ROC compliance was giving us so much stress every year. Now GCS takes care of everything. We just focus on our business. No more late fees!"</p>
                     <div class="testimonial-name">Meenakshi S., Trichy</div>
                 </div>
-
-                <!-- 4 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
-                    <p class="testimonial-text">"They helped us reduce our company tax legally. Saved good amount of money. Very professional people. Only thing is sometimes response is a bit slow but work quality is excellent."</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
+                    <p class="testimonial-text">"They helped us reduce our company tax legally. Saved good amount of money. Very professional people. Response sometimes a bit slow but work quality is excellent."</p>
                     <div class="testimonial-name">Balaji S., Chennai</div>
                 </div>
-
-                <!-- 5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Our quarterly TDS and P&L reports are always ready on time. No notices, no problems. I trust them fully with all our accounts."</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
+                    <p class="testimonial-text">"Our quarterly TDS and P&L reports are always ready on time. No notices, no problems. I trust them fully with all our accounts work."</p>
                     <div class="testimonial-name">Senthamarai K., Salem</div>
                 </div>
-
-                <!-- 4.5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i>
-                    </div>
-                    <p class="testimonial-text">"I had some property tax issue and got a notice. I was tensed but GCS sorted it out quickly. Good support and very reasonable charges too."</p>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i></div>
+                    <p class="testimonial-text">"I had some property tax issue and got a notice. I was very tensed but GCS sorted it out quickly. Good support and very reasonable charges too."</p>
                     <div class="testimonial-name">Devika R., Tirunelveli</div>
                 </div>
-
-                <!-- 5 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
                     <p class="testimonial-text">"Got an income tax notice and didn't know what to do. Called GCS and they handled everything. Notice was closed within few weeks. Absolute lifesavers!"</p>
                     <div class="testimonial-name">Yogesh P., Erode</div>
                 </div>
-
-                <!-- 4 stars -->
                 <div class="testimonial-card">
                     <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
+                    <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
                     <p class="testimonial-text">"Investment planning was always confusing for me. GCS sat with me, understood my needs and gave a simple clear plan. Now I know exactly where my money is going!"</p>
                     <div class="testimonial-name">Preethi V., Pondicherry</div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -480,7 +419,6 @@
                         <li><i class="ph-fill ph-envelope"></i><span><a href="mailto:info@goodwillconsultancyservice.com" style="color:inherit;text-decoration:none;font-weight:500;">info@goodwillconsultancyservice.com</a></span></li>
                         <li><i class="ph-fill ph-map-pin"></i><span><a href="https://maps.google.com/?q=No.1,+1st+Floor,+Veerasamy+St,+Periamet,+Park+Town,+Chennai,+Tamil+Nadu+600003,+India" target="_blank" style="color:inherit;text-decoration:none;font-weight:500;">No.1, 1st Floor, Veerasamy St, Periamet, Park Town, Chennai, Tamil Nadu 600003</a></span></li>
                     </ul>
-                    <!-- Social Icons below contact details -->
                     <div class="contact-social-icons">
                         <a href="https://wa.me/919363476100" target="_blank" class="contact-social-btn whatsapp" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
                         <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" class="contact-social-btn instagram" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
@@ -490,19 +428,10 @@
                 </div>
                 <div class="contact-form-container animate-fade-up">
                     <form class="contact-form" id="contact-form" method="POST">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" required>
-                        </div>
+                        <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" name="phone" required>
-                            </div>
+                            <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+                            <div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
                         </div>
                         <div class="form-group">
                             <label>Service</label>
@@ -517,10 +446,7 @@
                                 <option>Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="message" rows="4" required></textarea>
-                        </div>
+                        <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
                         <button type="submit" class="btn btn-navy-gold">Send Message &rarr;</button>
                     </form>
                 </div>
@@ -587,25 +513,27 @@
     <script src="js/script.js"></script>
     <script src="js/calculator.js"></script>
 
-    <!-- Particle Generator + Slab Toggle -->
     <script>
-        // Generate floating particles
+        // Floating Particles
         const container = document.getElementById('particles');
         for (let i = 0; i < 18; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
             const size = Math.random() * 40 + 10;
-            p.style.cssText = `
-                width: ${size}px; height: ${size}px;
-                left: ${Math.random() * 100}%;
-                animation-duration: ${Math.random() * 20 + 15}s;
-                animation-delay: ${Math.random() * 10}s;
-                opacity: ${Math.random() * 0.4 + 0.05};
-            `;
+            p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*0.4+0.05};`;
             container.appendChild(p);
         }
 
-        // Slab toggle
+        // Hero Background Carousel
+        const slides = document.querySelectorAll('.hero-bg-slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 6000);
+
+        // Tax Slab Toggle
         const slabToggle = document.getElementById('toggle-slabs');
         const slabContainer = document.getElementById('slab-container');
         const newSlabs = document.getElementById('new-regime-slabs');
@@ -614,26 +542,14 @@
         if (slabToggle && slabContainer) {
             slabToggle.addEventListener('click', () => {
                 slabContainer.classList.toggle('open');
-                slabToggle.textContent = slabContainer.classList.contains('open')
-                    ? '📊 Hide Tax Slabs ▲'
-                    : '📊 View Tax Slabs ▼';
+                slabToggle.textContent = slabContainer.classList.contains('open') ? '📊 Hide Tax Slabs ▲' : '📊 View Tax Slabs ▼';
             });
         }
 
         const regimeNewBtn = document.getElementById('regime-new');
         const regimeOldBtn = document.getElementById('regime-old');
-        if (regimeNewBtn) {
-            regimeNewBtn.addEventListener('click', () => {
-                if (newSlabs) newSlabs.style.display = 'block';
-                if (oldSlabs) oldSlabs.style.display = 'none';
-            });
-        }
-        if (regimeOldBtn) {
-            regimeOldBtn.addEventListener('click', () => {
-                if (oldSlabs) oldSlabs.style.display = 'block';
-                if (newSlabs) newSlabs.style.display = 'none';
-            });
-        }
+        if (regimeNewBtn) regimeNewBtn.addEventListener('click', () => { if(newSlabs) newSlabs.style.display='block'; if(oldSlabs) oldSlabs.style.display='none'; });
+        if (regimeOldBtn) regimeOldBtn.addEventListener('click', () => { if(oldSlabs) oldSlabs.style.display='block'; if(newSlabs) newSlabs.style.display='none'; });
     </script>
 </body>
 </html>
