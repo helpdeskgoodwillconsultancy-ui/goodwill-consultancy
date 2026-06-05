@@ -10,3 +10,11 @@ uploads/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Environment Variables
+.env
+.env.*
+
+# IDE settings
+.vscode/
+.idea/
