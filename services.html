@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Goodwill Consultancy Service offers tax, accounting, GST registration, financial planning and business advisory services in India. Book a free consultation today.">
-    <meta name="keywords" content="tax consultant India, GST registration, business registration, financial planning, income tax, bookkeeping, company registration">
-    <meta name="author" content="Goodwill Consultancy Service">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Goodwill Consultancy Service | Your Vision, Our Financial Stewardship">
-    <meta property="og:description" content="End-to-end tax, financial, legal, and business advisory solutions tailored to your needs.">
-    <meta property="og:url" content="https://goodwillconsultancyservice.com">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://goodwillconsultancyservice.com/logo.png">
-    <title>Goodwill Consultancy Service | Your Vision, Our Financial Stewardship</title>
+    <title>Detailed Services | Goodwill Consultancy Service</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-06ZTJ04V1C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,118 +24,144 @@
       gtag('js', new Date());
       gtag('config', 'G-06ZTJ04V1C');
     </script>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/calculator.css">
     <style>
-        /* ── Mission/Vision ── */
-        .mission-vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .mv-card { padding: 2rem; background: var(--white); border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: var(--shadow); }
-
-        /* ── 3D Card Effects ── */
-        .service-card {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
+        .service-detail-section { padding: 5rem 0; }
+        .simplified-services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
         }
-        .service-card:hover {
-            transform: perspective(800px) rotateY(-5deg) rotateX(3deg) translateY(-8px);
-            box-shadow: 8px 16px 32px rgba(0,0,0,0.18);
+        .simplified-service-card {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--gold);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        .why-card {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        .simplified-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
         }
-        .why-card:hover {
-            transform: perspective(600px) rotateX(5deg) translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        .simplified-service-icon {
+            font-size: 3rem;
+            color: var(--navy);
+            display: inline-block;
         }
-        .mv-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        .service-header-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
-        .mv-card:hover {
-            transform: perspective(600px) rotateY(3deg) translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        .simplified-service-card h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin: 0;
+            font-family: var(--font-heading);
+            font-weight: 600;
         }
-
-        /* ── Hero Parallax ── */
-        .hero { transform-style: preserve-3d; }
-        .hero-overlay { transform: translateZ(-1px) scale(1.05); }
-
-        /* ── Floating particles ── */
-        .particles-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
+        .service-tagline-detail {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 500;
         }
-        .particle {
-            position: absolute; border-radius: 50%;
-            background: rgba(184,115,51,0.08);
-            animation: floatParticle linear infinite;
+        .service-body-text {
+            font-size: 1rem;
+            color: var(--text-main);
+            line-height: 1.7;
         }
-
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        .service-lists-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
         }
-
-        /* ── Tax Slab Table ── */
-        .slab-toggle {
-            font-size: 0.85rem; color: var(--gold); cursor: pointer;
-            margin-top: 1rem; display: inline-flex; align-items: center;
-            gap: 6px; font-weight: 500; user-select: none;
-            padding: 6px 12px; border: 1px solid var(--gold);
-            border-radius: 20px; transition: all 0.2s ease;
+        .service-list-block {
+            background: var(--cream);
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 3px solid var(--navy);
         }
-        .slab-toggle:hover { background: var(--gold); color: white; }
-        .slab-container { display: none; margin-top: 1rem; }
-        .slab-container.open { display: block; }
-        .tax-slab-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; border-radius: 8px; overflow: hidden; }
-        .tax-slab-table th { background: var(--navy); color: white; padding: 8px 12px; text-align: left; }
-        .tax-slab-table td { padding: 8px 12px; border-bottom: 1px solid #eee; }
-        .tax-slab-table tr:nth-child(even) td { background: #f8f4ee; }
-        .tax-slab-table .slab-note td { font-size: 0.78rem; color: var(--text-muted); background: #fffbf5 !important; font-style: italic; }
-
-        /* ── Contact Social Icons ── */
-        .contact-social-icons { display: flex; gap: 14px; margin-top: 1.5rem; flex-wrap: wrap; }
-        .contact-social-btn {
-            width: 52px; height: 52px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: white; text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .service-list-block h4 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-family: var(--font-body);
+            font-weight: 600;
         }
-        .contact-social-btn:hover { transform: scale(1.2) translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
-        .contact-social-btn.whatsapp { background: #25D366; animation: floatIcon 3s ease-in-out infinite; }
-        .contact-social-btn.instagram { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); animation: floatIcon 3s ease-in-out infinite 0.3s; }
-        .contact-social-btn.linkedin { background: #0077B5; animation: floatIcon 3s ease-in-out infinite 0.6s; }
-        .contact-social-btn.email { background: var(--navy); animation: floatIcon 3s ease-in-out infinite 0.9s; }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .service-list-block ul {
+            list-style: none;
+            padding: 0;
         }
-
-        /* ── Star ratings ── */
-        .star-full { color: #f5a623; }
-        .star-half { color: #f5a623; }
-        .star-empty { color: #ddd; }
+        .service-list-block li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-list-block li::before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .service-faqs {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .service-faqs h4 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-family: var(--font-heading);
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .faq-a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .service-keywords {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            margin-top: 10px;
+            border-top: 1px dashed #ddd;
+            padding-top: 10px;
+        }
+        .cta-banner { background: var(--navy); color: white; padding: 3.5rem; border-radius: 12px; text-align: center; margin-top: 4rem; }
+        .cta-banner h2 { color: var(--gold); margin-bottom: 1rem; font-family: var(--font-heading); font-size: 2.2rem; }
+        .cta-banner p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem; }
     </style>
 </head>
-<body>
-
-    <!-- Floating Particles -->
-    <div class="particles-container" id="particles"></div>
-
+<body class="section-light">
     <!-- Navbar -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-                <img src="logo.png" alt="GCS Logo" style="height:45px;width:auto;background:none;mix-blend-mode:screen;">
-                <div>
-                    <h1 style="line-height:1.1;font-weight:800;">Goodwill Consultancy</h1>
-                    <p style="font-size:0.75rem;color:var(--gold);margin:0;font-weight:500;letter-spacing:0.5px;">Your Vision, Our Financial Stewardship</p>
-                </div>
-            </a>
+               <img src="logo.png" alt="GCS Logo" style="height:45px;width:auto;background:none;mix-blend-mode:screen;">
+               <div>
+                   <h1 style="line-height:1.1;font-weight:800;">Goodwill Consultancy</h1>
+             </div>
+          </a>
             <button class="mobile-toggle" id="mobile-toggle"><i class="ph ph-list"></i></button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html#home">Home</a></li>
@@ -145,495 +170,501 @@
                 <li><a href="faq.html">FAQs</a></li>
                 <li><a href="index.html#calculator">Calculator</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="#contact" class="btn btn-primary">Get Started</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <div class="hero-text animate-fade-up">
-                <h2>Your Trusted Partner in Financial Growth & Business Success</h2>
-                <p>Welcome to Goodwill Consultancy Service (GCS). Whether you're a startup taking your first step, a growing entrepreneur, or an established company, we provide end-to-end tax, financial, and advisory services designed to propel your business forward.</p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">Book a Free Consultation &rarr;</a>
-                    <a href="services.html" class="btn btn-outline">Explore Services</a>
-                </div>
-            </div>
-            <div class="hero-quote animate-fade-up" style="animation-delay:0.2s">
-                <blockquote>"Behind every successful business is a team that manages the numbers right."</blockquote>
-                <cite>— At GCS, we make those numbers work for you.</cite>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about section-light">
-        <div class="container">
-            <div class="section-header animate-fade-up">
-                <span class="eyebrow">Introduction</span>
-                <h2>Bridging the Gap Between Financial Expertise and Business Innovation</h2>
-                <p class="mt-1">At Goodwill Consultancy Service, we bring holistic solutions to modern businesses. Our goal is not just compliance but growth. We ensure your business doesn't just survive regulatory requirements but thrives in a competitive market.</p>
-            </div>
-            <div class="mission-vision-grid animate-fade-up">
-                <div class="mv-card">
-                    <i class="ph ph-target" style="font-size:2rem;color:var(--gold);"></i>
-                    <h3>Our Mission</h3>
-                    <p>"We simplify the complex — so businesses can focus on growing, not on paperwork."</p>
-                </div>
-                <div class="mv-card">
-                    <i class="ph ph-eye" style="font-size:2rem;color:var(--gold);"></i>
-                    <h3>Our Vision</h3>
-                    <p>"Every business, built to last. Every number, built to trust."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Carousel -->
-    <section class="section-navy">
-        <div class="container">
-            <div class="section-header text-center animate-fade-up">
-                <h2 style="color:white;">Our Services</h2>
-                <p style="color:rgba(255,255,255,0.8);">A complete suite of financial, tax, legal, and advisory services.</p>
-            </div>
-            <div class="carousel-wrap animate-fade-up">
-                <div class="carousel-track" id="servicesTrack">
-                    <div class="service-card"><div class="svc-num">01</div><h4>Company Registration</h4><p class="service-tagline">Start your journey the right way.</p><p class="service-desc">Private Limited, LLP, OPC, and Partnership setup with seamless digital filing.</p><a href="services.html#registration">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">02</div><h4>Accounts & Book-Keeping</h4><p class="service-tagline">Stay financially sharp with accurate records.</p><p class="service-desc">Professional transaction records, ledgers, MIS reports, and payables management.</p><a href="services.html#bookkeeping">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">03</div><h4>Income Tax Filing</h4><p class="service-tagline">Don't just file returns, file them smartly.</p><p class="service-desc">Personalized ITR filing, business tax returns, and strategic advance tax planning.</p><a href="services.html#taxation">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">04</div><h4>CMA Projection</h4><p class="service-tagline">Get your loan approved with confidence.</p><p class="service-desc">Bank-trusted CMA reports, project projections, and banking & non-banking loan support.</p><a href="services.html#cma">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">05</div><h4>Financial Analysis</h4><p class="service-tagline">Secure your future with smart planning.</p><p class="service-desc">Comprehensive investment planning, MIS reports, P&L statements, and wealth advisory.</p><a href="services.html#financial-analysis">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">06</div><h4>ROC Compliance</h4><p class="service-tagline">Stay compliant, stay confident.</p><p class="service-desc">Annual ROC return filings, company law compliance, and director changes.</p><a href="services.html#roc">Learn More →</a></div>
-                    <div class="service-card"><div class="svc-num">07</div><h4>Business Consulting</h4><p class="service-tagline">Business growth is not by chance, it's by choice.</p><p class="service-desc">Startup strategic advisory, expansion planning, cost audits, and tax efficiency maps.</p><a href="services.html#consulting">Learn More →</a></div>
-                </div>
-                <div class="carousel-btns">
-                    <button id="prevBtn" aria-label="Previous slide">&#8592;</button>
-                    <button id="nextBtn" aria-label="Next slide">&#8594;</button>
-                </div>
-                <div class="dots" id="carouselDots"></div>
-            </div>
-            <div class="text-center mt-3">
-                <a href="services.html" class="btn btn-primary" style="padding:1rem 2.5rem;font-size:1.1rem;font-weight:600;">View All Services →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section id="why-us" class="section-light">
-        <div class="container">
-            <div class="section-header text-center animate-fade-up"><h2>Why Choose GCS?</h2></div>
-            <div class="why-grid">
-                <div class="why-card animate-fade-up"><div class="why-num">01</div><h4>Expertise Across Domains</h4><p>Tax, Finance, Legal & Business Strategy under one roof.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">02</div><h4>Tailored Solutions</h4><p>Because no two businesses are the same.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">03</div><h4>End-to-End Support</h4><p>From registration to sustained growth.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">04</div><h4>Transparency & Reliability</h4><p>We believe in building trust before numbers.</p></div>
-            </div>
-            <div class="text-center mt-3 animate-fade-up">
-                <p><strong>Would you trust your growth with just anyone, or with experts who understand both your compliance and your vision?</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section id="calculator" class="section-cream">
-        <div class="container">
-            <div class="section-header text-center animate-fade-up">
-                <h2>Income Tax Calculator</h2>
-                <p>Calculate your estimated tax liability for FY 2025-26 (Simplified Overall View).</p>
-            </div>
-            <div class="calculator-container animate-fade-up">
-                <div class="calc-tabs">
-                    <button class="calc-tab active" id="tab-individual">Individual / Salaried</button>
-                </div>
-                <div class="calc-body">
-                    <div class="calc-section active" id="sec-individual">
-                        <div class="input-panel">
-                            <h3 class="mb-1">Income Details</h3>
-                            <div class="toggle-container">
-                                <div class="regime-toggle active" id="regime-new">New Regime</div>
-                                <div class="regime-toggle" id="regime-old">Old Regime</div>
-                            </div>
-
-                            <!-- Slab Toggle -->
-                            <span class="slab-toggle" id="toggle-slabs">📊 View Tax Slabs ▼</span>
-                            <div class="slab-container" id="slab-container">
-                                <div id="new-regime-slabs">
-                                    <table class="tax-slab-table">
-                                        <thead><tr><th>Income Range</th><th>Rate</th><th>Section</th></tr></thead>
-                                        <tbody>
-                                            <tr><td>Up to ₹4,00,000</td><td>Nil</td><td>Basic Exemption</td></tr>
-                                            <tr><td>₹4,00,001 – ₹8,00,000</td><td>5%</td><td>New Regime Slab</td></tr>
-                                            <tr><td>₹8,00,001 – ₹12,00,000</td><td>10%</td><td>New Regime Slab</td></tr>
-                                            <tr><td>₹12,00,001 – ₹16,00,000</td><td>15%</td><td>New Regime Slab</td></tr>
-                                            <tr><td>₹16,00,001 – ₹20,00,000</td><td>20%</td><td>New Regime Slab</td></tr>
-                                            <tr><td>₹20,00,001 – ₹24,00,000</td><td>25%</td><td>New Regime Slab</td></tr>
-                                            <tr><td>Above ₹24,00,000</td><td>30%</td><td>New Regime Slab</td></tr>
-                                            <tr class="slab-note"><td colspan="3">✅ Rebate u/s 87A: Zero tax up to ₹12L &nbsp;|&nbsp; Standard Deduction u/s 16: ₹75,000 &nbsp;|&nbsp; Surcharge capped at 25% for new regime</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="old-regime-slabs" style="display:none;">
-                                    <table class="tax-slab-table">
-                                        <thead><tr><th>Income Range</th><th>Rate</th><th>Section</th></tr></thead>
-                                        <tbody>
-                                            <tr><td>Up to ₹2,50,000</td><td>Nil</td><td>Basic Exemption</td></tr>
-                                            <tr><td>₹2,50,001 – ₹5,00,000</td><td>5%</td><td>Old Regime Slab</td></tr>
-                                            <tr><td>₹5,00,001 – ₹10,00,000</td><td>20%</td><td>Old Regime Slab</td></tr>
-                                            <tr><td>Above ₹10,00,000</td><td>30%</td><td>Old Regime Slab</td></tr>
-                                            <tr class="slab-note"><td colspan="3">✅ Rebate u/s 87A: Up to ₹5L &nbsp;|&nbsp; Standard Deduction u/s 16: ₹50,000 &nbsp;|&nbsp; Deductions: 80C, 80D, 80E etc. allowed</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="margin-top:1rem;">
-                                <label>Annual Gross Income (₹)</label>
-                                <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
-                            </div>
-                            <div class="form-group">
-                                <label>Age Group</label>
-                                <select id="indiv-age">
-                                    <option value="<60">Below 60 Years</option>
-                                    <option value="60-80">Senior Citizen (60-80 Years)</option>
-                                    <option value="80+">Super Senior (80+ Years)</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="deductions-wrapper" style="opacity:0.5;">
-                                <label>Additional Deductions (80C, 80D, etc.)</label>
-                                <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
-                            </div>
-                            <div class="form-row" style="align-items:flex-end;gap:10px;margin-top:20px;">
-                                <div class="form-group" style="flex:2;">
-                                    <label>Asset Block</label>
-                                    <select id="indiv-asset-type" style="padding:12px 15px;">
-                                        <option value="computers">Computers & Software (40% Dep.)</option>
-                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" style="flex:2;">
-                                    <label>Asset Name</label>
-                                    <input type="text" id="indiv-asset-name" placeholder="e.g. Office PC">
-                                </div>
-                                <div class="form-group" style="flex:2;">
-                                    <label>Purchase Value (₹)</label>
-                                    <input type="number" id="indiv-asset-value" placeholder="e.g. 50000" min="0">
-                                </div>
-                                <div class="form-group" style="flex:0.8;margin-bottom:0;">
-                                    <button type="button" class="btn btn-navy-gold" id="btn-add-indiv-asset" style="height:48px;width:100%;padding:0;display:flex;align-items:center;justify-content:center;"><i class="ph ph-plus-circle" style="font-size:1.4rem;"></i></button>
-                                </div>
-                            </div>
-                            <div id="indiv-asset-list-container" class="asset-inventory-container" style="display:none;">
-                                <div class="asset-inventory-title">
-                                    <span>Added Assets Inventory</span>
-                                    <span id="indiv-asset-count" class="asset-badge">0 Assets</span>
-                                </div>
-                                <div class="asset-inventory-list" id="indiv-asset-list"></div>
-                            </div>
-                        </div>
-                        <div class="result-panel">
-                            <div class="result-box">
-                                <h4>Estimated Tax Liability</h4>
-                                <div class="amount" id="res-indiv-tax">₹0</div>
-                                <div class="help-text">Effective Rate: <span id="res-indiv-rate">0%</span></div>
-                            </div>
-                            <div class="result-box">
-                                <h4>Net Taxable Income</h4>
-                                <div style="font-size:1.2rem;font-weight:600;" id="res-indiv-taxable">₹0</div>
-                            </div>
-                            <div id="indiv-breakdown"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="calc-disclaimer">
-                    <strong>Legal Disclaimer:</strong> This calculator is for illustrative purposes only and provides a simplified estimation based on standard tax rates. It does not constitute formal tax or legal advice. Actual tax liabilities are subject to individual deductions, exemptions, and official government assessments. Please book a free consultation with our expert CA team at Goodwill Consultancy to secure verified tax results.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header text-center animate-fade-up">
-                <span class="eyebrow">Client Success</span>
-                <h2>Client Testimonials</h2>
-                <p>Hear from businesses and individuals who trust Goodwill Consultancy.</p>
-            </div>
-            <div class="testimonials-grid animate-fade-up">
-
-                <!-- 5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Anna, honestly GCS is too good. They registered our company within one week only. No tension, no running around. Everything they handled properly."</p>
-                    <div class="testimonial-name">Ranganathan S., Chennai</div>
-                </div>
-
-                <!-- 4 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
-                    <p class="testimonial-text">"I was so confused about GST filing. These people explained everything simply and filed on time. No last minute panic. Very satisfied! Would have been 5 stars but took a little time."</p>
-                    <div class="testimonial-name">Anitha K., Coimbatore</div>
-                </div>
-
-                <!-- 5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Bank loan was getting rejected again and again. GCS prepared the CMA report and within two weeks our loan got approved. Super happy!"</p>
-                    <div class="testimonial-name">Elango T., Madurai</div>
-                </div>
-
-                <!-- 4.5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i>
-                    </div>
-                    <p class="testimonial-text">"I do freelance work so tax filing was always a headache for me. GCS made it so simple and even helped me save more money. Will definitely come back next year!"</p>
-                    <div class="testimonial-name">Kavin S., Bangalore</div>
-                </div>
-
-                <!-- 5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"ROC compliance was giving us so much stress every year. Now GCS takes care of everything. We just focus on our business. No more late fees at all!"</p>
-                    <div class="testimonial-name">Meenakshi S., Trichy</div>
-                </div>
-
-                <!-- 4 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
-                    <p class="testimonial-text">"They helped us reduce our company tax legally. Saved good amount of money. Very professional people. Only thing is sometimes response is a bit slow but work quality is excellent."</p>
-                    <div class="testimonial-name">Balaji S., Chennai</div>
-                </div>
-
-                <!-- 5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Our quarterly TDS and P&L reports are always ready on time. No notices, no problems. I trust them fully with all our accounts."</p>
-                    <div class="testimonial-name">Senthamarai K., Salem</div>
-                </div>
-
-                <!-- 4.5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i>
-                    </div>
-                    <p class="testimonial-text">"I had some property tax issue and got a notice. I was tensed but GCS sorted it out quickly. Good support and very reasonable charges too."</p>
-                    <div class="testimonial-name">Devika R., Tirunelveli</div>
-                </div>
-
-                <!-- 5 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i>
-                    </div>
-                    <p class="testimonial-text">"Got an income tax notice and didn't know what to do. Called GCS and they handled everything. Notice was closed within few weeks. Absolute lifesavers!"</p>
-                    <div class="testimonial-name">Yogesh P., Erode</div>
-                </div>
-
-                <!-- 4 stars -->
-                <div class="testimonial-card">
-                    <i class="ph-fill ph-quotes quote-icon"></i>
-                    <div class="testimonial-stars">
-                        <i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i>
-                    </div>
-                    <p class="testimonial-text">"Investment planning was always confusing for me. GCS sat with me, understood my needs and gave a simple clear plan. Now I know exactly where my money is going!"</p>
-                    <div class="testimonial-name">Preethi V., Pondicherry</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section-light">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info animate-fade-up">
-                    <h2>Ready to Grow?</h2>
-                    <p>Fill out our Quick Contact Form and our team will get back to you. "Your growth is our goodwill."</p>
-                    <ul class="contact-details">
-                        <li><i class="ph-fill ph-phone"></i><span><a href="tel:+919363476100" style="color:inherit;text-decoration:none;font-weight:500;">+91 93634 76100</a></span></li>
-                        <li><i class="ph-fill ph-envelope"></i><span><a href="mailto:info@goodwillconsultancyservice.com" style="color:inherit;text-decoration:none;font-weight:500;">info@goodwillconsultancyservice.com</a></span></li>
-                        <li><i class="ph-fill ph-map-pin"></i><span><a href="https://maps.google.com/?q=No.1,+1st+Floor,+Veerasamy+St,+Periamet,+Park+Town,+Chennai,+Tamil+Nadu+600003,+India" target="_blank" style="color:inherit;text-decoration:none;font-weight:500;">No.1, 1st Floor, Veerasamy St, Periamet, Park Town, Chennai, Tamil Nadu 600003</a></span></li>
-                    </ul>
-                    <!-- Social Icons below contact details -->
-                    <div class="contact-social-icons">
-                        <a href="https://wa.me/919363476100" target="_blank" class="contact-social-btn whatsapp" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" class="contact-social-btn instagram" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" class="contact-social-btn linkedin" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
-                        <a href="mailto:info@goodwillconsultancyservice.com" class="contact-social-btn email" aria-label="Email"><i class="ph-fill ph-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form-container animate-fade-up">
-                    <form class="contact-form" id="contact-form" method="POST">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Service</label>
-                            <select name="service" required>
-                                <option value="">Select a service</option>
-                                <option>Company Registration</option>
-                                <option>Book-keeping</option>
-                                <option>Taxation</option>
-                                <option>Financial Planning</option>
-                                <option>Reporting</option>
-                                <option>Advisory</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="message" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-navy-gold">Send Message &rarr;</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating Social Widgets -->
-    <div class="floating-socials">
-        <a href="https://wa.me/919363476100" target="_blank" class="float-btn whatsapp" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
-        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" class="float-btn instagram" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" class="float-btn linkedin" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+    <!-- Page Header -->
+    <div class="page-header" style="margin-top: 80px;">
+    <div class="container">
+        <a href="index.html" class="btn btn-outline" style="margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 8px;">
+            ← Back to Home
+        </a>
+        <h1>Our Expert Services</h1>
+        <p>From company registration to strategic ROC compliance and consulting, we fuel your business journey.</p>
     </div>
+</div>
 
-    <!-- Footer -->
+    <!-- Services Grid Section -->
+    <section class="service-detail-section">
+        <div class="container">
+            <div class="simplified-services-grid">
+                
+                <!-- 1. Company Registration Services -->
+                <div class="simplified-service-card" id="registration">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-briefcase"></i></div>
+                        <div>
+                            <h3>1. Company Registration Services</h3>
+                            <div class="service-tagline-detail">Start your journey the right way.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        At Goodwill Consultancy Service, we provide seamless company registration services for Private Limited Companies, LLPs, Proprietorships, Partnerships, and One-Person Companies. From name approval to compliance filing, we take care of every legal and procedural detail. A strong business foundation begins with the right entity selection. We guide you through legal structures, tax implications, compliance requirements, and ownership flexibility—ensuring your company is registered in line with your growth vision.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our Process Includes:</h4>
+                            <ul>
+                                <li>Business structure advisory (Pvt Ltd, LLP, OPC, etc.)</li>
+                                <li>Digital Signature Certificates (DSC) & DIN registration</li>
+                                <li>Name approval application & drafting incorporation deeds</li>
+                                <li>PAN, TAN, GST, and MSME registrations</li>
+                                <li>ROC compliance setup & incorporation certificates</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Work With Us?</h4>
+                            <ul>
+                                <li>100% legal clarity & entities tailored to your scale</li>
+                                <li>Zero hassle - we draft and handle all legal papers</li>
+                                <li>Prompt timelines - usually completed in 7-10 working days</li>
+                                <li>Direct liaison with Ministry of Corporate Affairs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Which business structure is best for startups?</div>
+                            <div class="faq-a">– Private Limited Companies are often best for startups seeking funding, while LLPs are good for operational flexibility.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q">How long does company registration take?</div>
+                            <div class="faq-a">– Typically 7–10 working days, subject to government approval times.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: company registration in India, register startup, private limited incorporation, LLP registration services</div>
+                </div>
+
+                <!-- 2. Accounts & Bookkeeping -->
+                <div class="simplified-service-card" id="bookkeeping">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-book-open"></i></div>
+                        <div>
+                            <h3>2. Accounts & Bookkeeping</h3>
+                            <div class="service-tagline-detail">Stay financially sharp with accurate records.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide professional accounting and bookkeeping services that keep your financial data accurate, compliant, and up-to-date. Numbers are not just records; they are the pulse of your business. With our dedicated accounting support, you avoid operational errors and maintain high-grade reports for investors and banks.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>What We Do:</h4>
+                            <ul>
+                                <li>Record daily transactions & receipts</li>
+                                <li>Prepare ledgers, journals, and trial balances</li>
+                                <li>Manage payables, receivables, and invoices</li>
+                                <li>Prepare MIS reports for corporate decision-making</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Benefits for You:</h4>
+                            <ul>
+                                <li>Better financial clarity & audit preparedness</li>
+                                <li>Reduced errors in tax compliance filings</li>
+                                <li>Time-saving for founders to focus on growth</li>
+                                <li>Strategic cash flow maps & analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Can bookkeeping help me save tax?</div>
+                            <div class="faq-a">– Yes, accurate records ensure correct deductions and prevent overpayment or missed legal exemptions.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: online bookkeeping services, bookkeeping in India, bookkeeping for small business, CA accounting firm</div>
+                </div>
+
+                <!-- 3. Income Tax Filing -->
+                <div class="simplified-service-card" id="taxation">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-coins"></i></div>
+                        <div>
+                            <h3>3. Income Tax Filing</h3>
+                            <div class="service-tagline-detail">Don’t just file returns, file them smartly.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We offer individual and corporate income tax filing services, ensuring complete compliance while maximizing tax benefits legally. Tax season doesn’t have to be stressful – we make it simple.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Services Covered:</h4>
+                            <ul>
+                                <li>Individual ITR (salaried, consultants, & freelancers)</li>
+                                <li>Business ITR (companies, LLPs, proprietors)</li>
+                                <li>Advance tax planning & computation u/s slabs</li>
+                                <li>Handling tax notices & assessment representation</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Choose Us?</h4>
+                            <ul>
+                                <li>Expert tax planning to reduce overall tax burden</li>
+                                <li>Avoid legal penalties and late filing fees u/s 234F</li>
+                                <li>Personalized approach based on your financial portfolio</li>
+                                <li>Support for capital gains, house property, & business incomes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">What documents are needed to file ITR?</div>
+                            <div class="faq-a">– Form 16, bank statements, investment proofs, business ledgers, and PAN/Aadhaar cards.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-q">Can I file ITR late?</div>
+                            <div class="faq-a">– Yes, but late fees and interest penalties apply u/s 234F. It is always better to file before the official deadline.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: Income tax consultant, GST filing services, ITR filing online, tax planning advisor</div>
+                </div>
+
+                <!-- 4. GST Services -->
+                <div class="simplified-service-card" id="gst">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-hand-coins"></i></div>
+                        <div>
+                            <h3>4. GST Services</h3>
+                            <div class="service-tagline-detail">Simplifying GST for your business.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We handle everything from GST registration to monthly return filing, reconciliations, audits, and advisory. GST compliance is not a burden when you have the right partner.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our GST Solutions:</h4>
+                            <ul>
+                                <li>GST registration for new entities</li>
+                                <li>GST monthly/quarterly returns (GSTR-1, GSTR-3B)</li>
+                                <li>GST reconciliation with GSTR-2A/2B for input credit</li>
+                                <li>GST audit, annual filing (GSTR-9), and notice handling</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Your Benefits:</h4>
+                            <ul>
+                                <li>Zero late fees and penalty risks</li>
+                                <li>Smooth Input Tax Credit (ITC) management</li>
+                                <li>Better compliance ratings on the GST portal</li>
+                                <li>Expert support on GST classification and tax rates</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-faqs">
+                        <h4>Frequently Asked Questions</h4>
+                        <div class="faq-item">
+                            <div class="faq-q">Do all businesses need GST registration?</div>
+                            <div class="faq-a">– Yes, if turnover exceeds ₹40 lakhs (₹20 lakhs for services or businesses in North-Eastern states), or for any interstate business transaction.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: GST filing services, GST registration, GST return filing online, input tax credit reconciliation</div>
+                </div>
+
+                <!-- 5. TDS Filing -->
+                <div class="simplified-service-card" id="tds">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-hash"></i></div>
+                        <div>
+                            <h3>5. TDS Filing</h3>
+                            <div class="service-tagline-detail">Accuracy matters most.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide complete TDS calculation, deduction, and filing services with error-free compliance. TDS compliance today saves you from penalties tomorrow.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>We Cover:</h4>
+                            <ul>
+                                <li>Quarterly TDS return filing (Form 24Q, 26Q, 27Q)</li>
+                                <li>PAN verification of deductees</li>
+                                <li>Online TDS challan payment & reconciliation</li>
+                                <li>Form 16 / 16A generation for employees & contractors</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why TDS Compliance Matters:</h4>
+                            <ul>
+                                <li>Avoids 1% per month late interest on non-deductions</li>
+                                <li>Prevents heavy 1.5% interest on delayed challans</li>
+                                <li>Avoids ₹200/day late filing fees</li>
+                                <li>Ensures smooth tax credits for your suppliers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: TDS filing online, TDS returns quarterly, Form 16 generation, corporate TDS consultant</div>
+                </div>
+
+                <!-- 6. CMA Projection -->
+                <div class="simplified-service-card" id="cma">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-file-text"></i></div>
+                        <div>
+                            <h3>6. CMA Projection</h3>
+                            <div class="service-tagline-detail">Get your loan approved with confidence.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We prepare bank-trusted Credit Monitoring Arrangement (CMA) reports and financial loan projections complete with key ratios, cash flow projections, and repayment schedules. Banks and financial institutions evaluate businesses based on these metrics; a well-prepared, professional CMA report increases your loan approval chances dramatically. Strong financials attract stronger funding.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>We Assist In:</h4>
+                            <ul>
+                                <li>Preparing bank-compliant CMA data & projections</li>
+                                <li>Loan documentation consultancy & project reports</li>
+                                <li>Securing working capital & term loans</li>
+                                <li>NBFC & banking loan restructuring support</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Key Metrics We Map:</h4>
+                            <ul>
+                                <li>Debt Service Coverage Ratio (DSCR)</li>
+                                <li>Current Ratio & Quick Ratio</li>
+                                <li>Funds Flow & Cash Flow projections</li>
+                                <li>Break-Even analysis & profitability metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: CMA report preparation, loan projection report, bank project report, business loan support</div>
+                </div>
+
+                <!-- 7. Financial Analysis -->
+                <div class="simplified-service-card" id="financial-analysis">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-chart-line-up"></i></div>
+                        <div>
+                            <h3>7. Financial Analysis</h3>
+                            <div class="service-tagline-detail">Secure your future with smart planning.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        We provide personalized financial planning, tax planning, wealth creation strategies, and professional report preparation (including MIS, P&Ls, and balance sheets) for management and investors. A goal without a plan is just a wish. We merge financial report prep and strategic investment advisory into a single, comprehensive layout to give you and your investors complete financial foresight.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>What We Cover:</h4>
+                            <ul>
+                                <li>Individual & Corporate Tax Planning maps</li>
+                                <li>Preparation of professional P&L, Balance Sheets, & Cash flows</li>
+                                <li>Wealth creation & tax-saving investment advisory</li>
+                                <li>Monthly Management Information Systems (MIS) preparation</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Strategic Benefits:</h4>
+                            <ul>
+                                <li>Clear overall view of your business's health</li>
+                                <li>Investor-ready financial decks & audited records</li>
+                                <li>Custom tax savings maps u/s 80C, 80D, etc.</li>
+                                <li>Long-term capital growth and risk mitigation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: wealth planning advisor, corporate financial analysis, MIS reports preparation, P&L statement service</div>
+                </div>
+
+                <!-- 8. ROC Compliance -->
+                <div class="simplified-service-card" id="roc">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-file-shield"></i></div>
+                        <div>
+                            <h3>8. ROC Compliance</h3>
+                            <div class="service-tagline-detail">Stay compliant, stay confident.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        Every registered company in India must file its annual financial statements and corporate returns with the Registrar of Companies (ROC) each year. ROC Compliance is the legal requirement to report your company's financial activities and structural changes (like changes in directors, share capital, or registered office address) to the government. We simplify this complex legal chore by handling all your annual filings, board resolutions, and statutory registers. By staying fully compliant, your business avoids heavy government penalties, legal audits, and remains in good standing for future expansions or fundraising.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>Our ROC Solutions Include:</h4>
+                            <ul>
+                                <li>Filing Annual Returns (Form MGT-7) & Financials (Form AOC-4)</li>
+                                <li>Drafting board resolutions & minutes of meetings</li>
+                                <li>Director addition / resignation filings (DIR-12)</li>
+                                <li>Share allotment & transfer documentation</li>
+                                <li>Maintaining statutory company registers u/s Companies Act</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Why Direct Compliances are Critical:</h4>
+                            <ul>
+                                <li>Avoids ₹100/day per form penalty for late filings</li>
+                                <li>Prevents directors from being disqualified u/s 164</li>
+                                <li>Maintains "Active" company status on MCA database</li>
+                                <li>Builds solid credentials for capital raising</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: ROC filing online, ROC annual compliance, company law consultant, MCA return filing</div>
+                </div>
+
+                <!-- 9. Business Consulting -->
+                <div class="simplified-service-card" id="consulting">
+                    <div class="service-header-group">
+                        <div class="simplified-service-icon"><i class="ph ph-chats-teardrop"></i></div>
+                        <div>
+                            <h3>9. Business Consulting</h3>
+                            <div class="service-tagline-detail">Business growth is not by chance, it’s by choice – and strategy.</div>
+                        </div>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        Business Consulting is expert, professional guidance designed to help your business solve operational bottlenecks, structure its financials, and build long-term expansion strategies. Whether you are a brand-new startup drafting a business plan or an established firm planning to scale operations, our experienced advisors provide critical insights on tax efficiency, market positioning, cost reduction, and capital structuring. We act as your external strategic partners, turning complex challenges into actionable pathways for sustainable growth and success.
+                    </p>
+
+                    <div class="service-lists-container">
+                        <div class="service-list-block">
+                            <h4>How We Advise Your Business:</h4>
+                            <ul>
+                                <li>Startup business modeling & legal structuring maps</li>
+                                <li>Cost optimization & cash flow efficiency audits</li>
+                                <li>Tax-efficient transaction and capital advisory</li>
+                                <li>Risk assessments, scaling maps, & exit strategies</li>
+                            </ul>
+                        </div>
+                        <div class="service-list-block">
+                            <h4>Our Consulting Process:</h4>
+                            <ul>
+                                <li>1. In-depth analysis of your operational metrics</li>
+                                <li>2. Identifying bottlenecks & tax-saving leakages</li>
+                                <li>3. Drafting a simplified strategic optimization guide</li>
+                                <li>4. Collaborative implementation and tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-1">
+                        <a href="index.html#contact" class="btn btn-navy-gold">Book a free consultation today!</a>
+                    </div>
+                    <div class="service-keywords">Keywords: best business consulting firm, startup business advisor, corporate tax strategist, company scaling consulting</div>
+                </div>
+
+            </div>
+
+            <div class="cta-banner animate-fade-up">
+                <h2>Your Growth is Our Goodwill</h2>
+                <p>Need a customized solution or want to discuss your requirements? Our experts are here to help.</p>
+                <a href="index.html#contact" class="btn btn-primary">Book a Free Consultation Today &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating Social Media Widgets -->
+<div class="floating-socials">
+    <a href="https://wa.me/919363476100" target="_blank" class="float-btn whatsapp" aria-label="WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+    <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" class="float-btn instagram" aria-label="Instagram">
+        <i class="ph-fill ph-instagram-logo"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" class="float-btn linkedin" aria-label="LinkedIn">
+        <i class="ph-fill ph-linkedin-logo"></i>
+    </a>
+</div>
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="logo.png" alt="GCS Logo" style="height:50px;margin-bottom:1rem;">
-                    <p>Your Vision, Our Financial Stewardship</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li>+91 93634 76100</li>
-                        <li>info@goodwillconsultancyservice.com</li>
-                        <li><a href="https://maps.google.com/?q=No.1,+1st+Floor,+Veerasamy+St,+Periamet,+Park+Town,+Chennai,+Tamil+Nadu+600003,+India" target="_blank" style="color:inherit;text-decoration:none;">No.1, 1st Floor, Veerasamy St, Chennai 600003</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <div class="footer-social-icons">
-                        <a href="https://wa.me/919363476100" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                        <a href="mailto:info@goodwillconsultancyservice.com"><i class="ph-fill ph-envelope"></i></a>
-                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank"><i class="ph-fill ph-linkedin-logo"></i></a>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Column 1 -->
+            <div class="footer-col">
+                <img src="logo.png" alt="GCS Logo" style="height: 50px; margin-bottom: 1rem;">
+                <p>Your Vision, Our Financial Stewardship</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Goodwill Consultancy Service. All rights reserved.</p>
+            <!-- Column 2 -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>+91 93634 76100</li>
+                    <li>info@goodwillconsultancyservice.com</li>
+                    <li><a href="https://maps.google.com/?q=No.1,+1st+Floor,+Veerasamy+St,+Periamet,+Park+Town,+Chennai,+Tamil+Nadu+600003,+India" target="_blank" style="color: inherit; text-decoration: none;">No.1, 1st Floor, Veerasamy St, Chennai 600003</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="footer-social-icons">
+                    <a href="https://wa.me/919363476100" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                    <a href="mailto:info@goodwillconsultancyservice.com"><i class="ph-fill ph-envelope"></i></a>
+                    <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank"><i class="ph-fill ph-linkedin-logo"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
-
-    <script id="popup-script-source" src="js/popup.js"></script>
-    <div class="popup-overlay" id="converter-popup">
-        <div class="popup-modal">
-            <button class="popup-close" id="popup-close"><i class="ph ph-x"></i></button>
-            <div id="popup-content"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Goodwill Consultancy Service. All rights reserved.</p>
         </div>
     </div>
-
-    <script src="js/script.js"></script>
-    <script src="js/calculator.js"></script>
-
-    <!-- Particle Generator + Slab Toggle -->
-    <script>
-        // Generate floating particles
-        const container = document.getElementById('particles');
-        for (let i = 0; i < 18; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 40 + 10;
-            p.style.cssText = `
-                width: ${size}px; height: ${size}px;
-                left: ${Math.random() * 100}%;
-                animation-duration: ${Math.random() * 20 + 15}s;
-                animation-delay: ${Math.random() * 10}s;
-                opacity: ${Math.random() * 0.4 + 0.05};
-            `;
-            container.appendChild(p);
-        }
-
-        // Slab toggle
-        const slabToggle = document.getElementById('toggle-slabs');
-        const slabContainer = document.getElementById('slab-container');
-        const newSlabs = document.getElementById('new-regime-slabs');
-        const oldSlabs = document.getElementById('old-regime-slabs');
-
-        if (slabToggle && slabContainer) {
-            slabToggle.addEventListener('click', () => {
-                slabContainer.classList.toggle('open');
-                slabToggle.textContent = slabContainer.classList.contains('open')
-                    ? '📊 Hide Tax Slabs ▲'
-                    : '📊 View Tax Slabs ▼';
-            });
-        }
-
-        const regimeNewBtn = document.getElementById('regime-new');
-        const regimeOldBtn = document.getElementById('regime-old');
-        if (regimeNewBtn) {
-            regimeNewBtn.addEventListener('click', () => {
-                if (newSlabs) newSlabs.style.display = 'block';
-                if (oldSlabs) oldSlabs.style.display = 'none';
-            });
-        }
-        if (regimeOldBtn) {
-            regimeOldBtn.addEventListener('click', () => {
-                if (oldSlabs) oldSlabs.style.display = 'block';
-                if (newSlabs) newSlabs.style.display = 'none';
-            });
-        }
-    </script>
-</body>
-</html>
+</footer>
