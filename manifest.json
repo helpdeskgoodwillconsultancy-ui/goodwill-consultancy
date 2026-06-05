@@ -1,0 +1,51 @@
+{
+  "background_color": "#ffffff",
+  "description": "Goodwill Consultancy Service offers tax, accounting, GST registration, financial planning and business advisory services in India. Book a free consultation today.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "goodwillconsultancyservice",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "goodwillconsultancyservice",
+  "start_url": "/",
+  "theme_color": "#880bda",
+  "icons": [
+    {
+      "src": "https://goodwillconsultancyservice.com/favicon.ico",
+      "type": "image/x-icon",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://goodwillconsultancyservice.com/logo.png",
+      "type": "image/png",
+      "sizes": "554x619",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 554,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://goodwillconsultancyservice.com/favicon.ico",
+      "type": "image/x-icon",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ]
+}
