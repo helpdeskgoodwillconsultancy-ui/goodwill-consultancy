@@ -146,3 +146,105 @@ if (contactForm) {
         });
     });
 }
+
+// Testimonials Carousel (Auto-scrolling)
+const testTrack = document.getElementById('testimonialsTrack');
+if (testTrack) {
+    const testDots = document.getElementById('testimonialDots');
+    const testCards = testTrack.querySelectorAll('.testimonial-card');
+    let autoScrollInterval;
+    let currentIndex = 0;
+
+    // Create navigation dots
+    testCards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => {
+            currentIndex = i;
+            scrollToCard(currentIndex);
+            resetAutoScroll();
+        };
+        if (testDots) testDots.appendChild(d);
+    });
+
+    function scrollToCard(index) {
+        const w = testCards[0].offsetWidth + 24; // Card width + gap
+        testTrack.scrollTo({ left: index * w, behavior: 'smooth' });
+    }
+
+    function updateActiveDot(index) {
+        if (testDots) {
+            testDots.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+        }
+    }
+
+    // Scroll listener to sync currentIndex and dots on manual swipe/scroll
+    let scrollTimeout;
+    testTrack.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const w = testCards[0].offsetWidth + 24;
+            currentIndex = Math.round(testTrack.scrollLeft / w);
+            if (currentIndex >= testCards.length) {
+                currentIndex = testCards.length - 1;
+            }
+            updateActiveDot(currentIndex);
+        }, 50);
+    });
+
+    // Auto scroll logic (slow auto-scrolling every 6 seconds)
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            const w = testCards[0].offsetWidth + 24;
+            const maxScrollLeft = testTrack.scrollWidth - testTrack.clientWidth;
+            if (testTrack.scrollLeft >= maxScrollLeft - 10) {
+                currentIndex = 0;
+            } else {
+                currentIndex = (currentIndex + 1) % testCards.length;
+            }
+            scrollToCard(currentIndex);
+        }, 6000); // 6 seconds for a comfortable reading pace
+    }
+
+    function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        startAutoScroll();
+    }
+
+    // Pause on user interaction (hover or touch)
+    testTrack.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+    testTrack.addEventListener('mouseleave', startAutoScroll);
+    testTrack.addEventListener('touchstart', () => clearInterval(autoScrollInterval), { passive: true });
+    testTrack.addEventListener('touchend', startAutoScroll, { passive: true });
+
+    // Prev/Next buttons
+    const prevBtn = document.getElementById('testimonialPrevBtn');
+    const nextBtn = document.getElementById('testimonialNextBtn');
+    if (prevBtn) {
+        prevBtn.onclick = () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = testCards.length - 1;
+            }
+            scrollToCard(currentIndex);
+            resetAutoScroll();
+        };
+    }
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            if (currentIndex < testCards.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            scrollToCard(currentIndex);
+            resetAutoScroll();
+        };
+    }
+
+    // Initial start
+    startAutoScroll();
+}
