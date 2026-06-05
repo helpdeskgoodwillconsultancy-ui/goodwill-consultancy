@@ -17,18 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
+    const isHomePage = document.querySelector('.hero-bg-carousel') !== null;
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+    if (navbar) {
+        if (!isHomePage) {
             navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Check initial scroll position
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            }
         }
-    });
-
-    // Check initial scroll position
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
     }
 
     // Smooth scroll for anchor links
@@ -118,16 +125,73 @@ if (track) {
     };
 }
 
+// Helper validation functions
+function isGenericPhoneNumber(phone) {
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length < 10) return true;
+    
+    // Repeating digits (e.g. 1111111111)
+    if (/^(\d)\1+$/.test(digits)) return true;
+    
+    // Sequential digits
+    const commonSequentials = [
+        '1234567890', '0123456789', '9876543210', '0987654321',
+        '1111111111', '2222222222', '3333333333', '4444444444',
+        '5555555555', '6666666666', '7777777777', '8888888888',
+        '9999999999', '0000000000'
+    ];
+    if (commonSequentials.includes(digits.substring(0, 10))) return true;
+    
+    return false;
+}
+
+function isValidEmail(email) {
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailReg.test(email)) return false;
+    
+    const domain = email.split('@')[1].toLowerCase();
+    const blockedDomains = [
+        'tempmail.com', 'temp-mail.org', '10minutemail.com', 'yopmail.com',
+        'mailinator.com', 'dispostable.com', 'guerrillamail.com', 'sharklasers.com',
+        'getairmail.com', 'boun.cr', 'drdrb.net', 'mintemail.com', 'temp-mail.ru',
+        'throwawaymail.com', 'maildrop.cc', 'mailnesia.com', 'mailcatch.com',
+        'tempmailaddress.com', 'generator.email', 'tempmail.net', 'tempmail.co'
+    ];
+    
+    if (blockedDomains.includes(domain)) return false;
+    
+    // Block common temp mail substrings
+    if (domain.includes('tempmail') || domain.includes('temp-mail') || domain.includes('disposable') || domain.includes('throwaway') || domain.includes('10minutemail') || domain.includes('mailinator') || domain.includes('yopmail')) {
+        return false;
+    }
+    
+    return true;
+}
+
 // Contact Form Submission
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        const phone = contactForm.querySelector('[name="phone"]').value;
+        const email = contactForm.querySelector('[name="email"]').value;
+
+        // Perform validations
+        if (isGenericPhoneNumber(phone)) {
+            alert('❌ Please enter a valid phone number (not a generic or sequential number).');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert('❌ Please enter a valid email address (temporary emails are not accepted).');
+            return;
+        }
+        
         const formData = {
             name: contactForm.querySelector('[name="name"]').value,
-            email: contactForm.querySelector('[name="email"]').value,
-            phone: contactForm.querySelector('[name="phone"]').value,
+            email: email,
+            phone: phone,
             service: contactForm.querySelector('[name="service"]').value,
             message: contactForm.querySelector('[name="message"]').value
         };

@@ -29,86 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dynamic Assets Storage
-    let individualAssets = [];
-
-    const assetRates = {
-        computers: { label: 'Computers (40% Dep.)', rate: 0.40 },
-        furniture: { label: 'Furniture (10% Dep.)', rate: 0.10 }
-    };
-
-    // Add Asset Button
-    const btnAddIndiv = document.getElementById('btn-add-indiv-asset');
-    if (btnAddIndiv) {
-        btnAddIndiv.addEventListener('click', () => {
-            const typeEl = document.getElementById('indiv-asset-type');
-            const nameEl = document.getElementById('indiv-asset-name');
-            const valEl = document.getElementById('indiv-asset-value');
-
-            if (typeEl && valEl) {
-                const val = parseFloat(valEl.value) || 0;
-                if (val <= 0) return;
-
-                const name = nameEl && nameEl.value.trim() ? nameEl.value.trim() : assetRates[typeEl.value].label.split(' ')[0];
-                individualAssets.push({
-                    type: typeEl.value,
-                    name: name,
-                    value: val
-                });
-
-                if (nameEl) nameEl.value = '';
-                valEl.value = '';
-                renderIndividualAssets();
-                calculateIndividual();
-            }
-        });
-    }
-
-    function renderIndividualAssets() {
-        const container = document.getElementById('indiv-asset-list-container');
-        const list = document.getElementById('indiv-asset-list');
-        const count = document.getElementById('indiv-asset-count');
-
-        if (!container || !list || !count) return;
-
-        if (individualAssets.length === 0) {
-            container.style.display = 'none';
-            list.innerHTML = '';
-            count.innerText = '0 Assets';
-            return;
-        }
-
-        container.style.display = 'block';
-        count.innerText = `${individualAssets.length} Asset${individualAssets.length > 1 ? 's' : ''}`;
-        list.innerHTML = individualAssets.map((asset, index) => {
-            const depVal = asset.value * assetRates[asset.type].rate;
-            return `
-                <div class="asset-item">
-                    <div class="asset-item-info">
-                        <span class="asset-badge">${assetRates[asset.type].label}</span>
-                        <strong>${asset.name}</strong>
-                        <span style="color:var(--text-muted)">Value: ₹${asset.value.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div style="display:flex; align-items:center; gap: 15px;">
-                        <span style="font-weight:600">Dep: ₹${Math.round(depVal).toLocaleString('en-IN')}</span>
-                        <button type="button" class="btn-delete-asset" data-index="${index}"><i class="ph ph-trash" style="font-size: 1.1rem;"></i></button>
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        list.querySelectorAll('.btn-delete-asset').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const idx = parseInt(btn.getAttribute('data-index'), 10);
-                individualAssets.splice(idx, 1);
-                renderIndividualAssets();
-                calculateIndividual();
-            });
-        });
-    }
-
     // Input Listeners
-    const indivInputs = ['indiv-income', 'indiv-age', 'indiv-deductions'];
+    const indivInputs = ['indiv-income', 'indiv-allowance', 'indiv-age', 'indiv-deductions'];
     indivInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -125,17 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const ageEl = document.getElementById('indiv-age');
         const age = ageEl ? ageEl.value : '<60';
 
+        const allowanceEl = document.getElementById('indiv-allowance');
+        const allowances = parseFloat(allowanceEl ? allowanceEl.value : 0) || 0;
+
         const dedEl = document.getElementById('indiv-deductions');
         const deductions = currentRegime === 'old' ? (parseFloat(dedEl ? dedEl.value : 0) || 0) : 0;
 
-        let totalDepreciation = 0;
-        individualAssets.forEach(asset => {
-            totalDepreciation += asset.value * assetRates[asset.type].rate;
-        });
-
         let standardDeduction = currentRegime === 'new' ? 75000 : 50000;
 
-        let taxable = gross - deductions - standardDeduction - totalDepreciation;
+        let taxable = gross - allowances - deductions - standardDeduction;
         if (taxable < 0) taxable = 0;
 
         let baseTax = 0;
@@ -194,7 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
             breakdown.innerHTML = `
                 <div class="breakdown-row"><span>Gross Base Tax</span> <span>₹${Math.round(baseTax).toLocaleString('en-IN')}</span></div>
                 <div class="breakdown-row"><span>Standard Deduction (u/s 16)</span> <span>- ₹${standardDeduction.toLocaleString('en-IN')}</span></div>
-                ${totalDepreciation > 0 ? `<div class="breakdown-row"><span>Asset Depreciation Deduction</span> <span style="color:#2e7d32">- ₹${Math.round(totalDepreciation).toLocaleString('en-IN')}</span></div>` : ''}
+                ${allowances > 0 ? `<div class="breakdown-row"><span>Exempt Allowances</span> <span style="color:#2e7d32">- ₹${Math.round(allowances).toLocaleString('en-IN')}</span></div>` : ''}
+                ${deductions > 0 ? `<div class="breakdown-row"><span>Chapter VI-A Deductions</span> <span style="color:#2e7d32">- ₹${Math.round(deductions).toLocaleString('en-IN')}</span></div>` : ''}
                 <div class="breakdown-row"><span>Surcharge</span> <span>₹${Math.round(surcharge).toLocaleString('en-IN')}</span></div>
                 <div class="breakdown-row"><span>Health & Education Cess (4%)</span> <span>₹${Math.round(cess).toLocaleString('en-IN')}</span></div>
             `;

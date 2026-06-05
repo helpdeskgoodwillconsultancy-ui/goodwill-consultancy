@@ -220,10 +220,53 @@ document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('popup-contact-form');
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
+                
+                const phone = document.getElementById('pc-phone').value;
+                const email = document.getElementById('pc-email').value;
+
+                // Validation Helpers
+                function isGenericPhone(ph) {
+                    const digits = ph.replace(/\D/g, '');
+                    if (digits.length < 10) return true;
+                    if (/^(\d)\1+$/.test(digits)) return true;
+                    const commonSequentials = [
+                        '1234567890', '0123456789', '9876543210', '0987654321',
+                        '1111111111', '2222222222', '3333333333', '4444444444',
+                        '5555555555', '6666666666', '7777777777', '8888888888',
+                        '9999999999', '0000000000'
+                    ];
+                    return commonSequentials.includes(digits.substring(0, 10));
+                }
+
+                function isValidMail(em) {
+                    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailReg.test(em)) return false;
+                    const domain = em.split('@')[1].toLowerCase();
+                    const blockedDomains = [
+                        'tempmail.com', 'temp-mail.org', '10minutemail.com', 'yopmail.com',
+                        'mailinator.com', 'dispostable.com', 'guerrillamail.com', 'sharklasers.com',
+                        'getairmail.com', 'boun.cr', 'drdrb.net', 'mintemail.com', 'temp-mail.ru',
+                        'throwawaymail.com', 'maildrop.cc', 'mailnesia.com', 'mailcatch.com',
+                        'tempmailaddress.com', 'generator.email', 'tempmail.net', 'tempmail.co'
+                    ];
+                    if (blockedDomains.includes(domain)) return false;
+                    return !(domain.includes('tempmail') || domain.includes('temp-mail') || domain.includes('disposable') || domain.includes('throwaway') || domain.includes('10minutemail') || domain.includes('mailinator') || domain.includes('yopmail'));
+                }
+
+                if (isGenericPhone(phone)) {
+                    alert('❌ Please enter a valid phone number (not a generic or sequential number).');
+                    return;
+                }
+
+                if (!isValidMail(email)) {
+                    alert('❌ Please enter a valid email address (temporary emails are not accepted).');
+                    return;
+                }
+
                 formData.contact = {
                     name: document.getElementById('pc-name').value,
-                    phone: document.getElementById('pc-phone').value,
-                    email: document.getElementById('pc-email').value,
+                    phone: phone,
+                    email: email,
                     biz: document.getElementById('pc-biz').value
                 };
                 currentStep++;
@@ -234,7 +277,13 @@ document.addEventListener('DOMContentLoaded', () => {
             btns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const val = btn.dataset.value;
-                    if (currentStep === 1) formData.situation = val;
+                    if (currentStep === 1) {
+                        formData.situation = val;
+                        // Immediately mark as completed to prevent showing again, and close the popup
+                        localStorage.setItem(COMPLETED_KEY, 'true');
+                        closePopup();
+                        return;
+                    }
                     if (currentStep === 3) formData.issues = val;
                     if (currentStep === 4) formData.budget = val;
                     if (currentStep === 5) formData.timeline = val;

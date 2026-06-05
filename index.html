@@ -108,7 +108,8 @@
             <a href="index.html" class="logo" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
                 <img src="logo.png" alt="GCS Logo" style="height:45px;width:auto;background:none;mix-blend-mode:screen;">
                 <div>
-                    <h1 style="line-height:1.1;font-weight:800;">Goodwill Consultancy</h1>
+                    <h1 style="line-height:1.1;font-weight:800;margin:0;">Goodwill Consultancy Service</h1>
+                    <p style="font-size:0.75rem;color:var(--gold);font-style:italic;margin:2px 0 0 0;font-family:var(--font-body);">Your Vision, Our Financial Stewardship</p>
                 </div>
             </a>
             <button class="mobile-toggle" id="mobile-toggle"><i class="ph ph-list"></i></button>
@@ -270,8 +271,16 @@
                             </div>
 
                             <div class="form-group" style="margin-top:1rem;">
-                                <label>Annual Gross Income (₹)</label>
+                                <label>Annual Gross Salary (₹)</label>
                                 <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Exempt Allowances (HRA, LTA, etc.) (₹)</label>
+                                <input type="number" id="indiv-allowance" placeholder="e.g. 100000" min="0">
+                            </div>
+                            <div class="form-group" id="deductions-wrapper" style="opacity:0.5;">
+                                <label>Additional Deductions (80C, 80D, etc.) (₹)</label>
+                                <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Age Group</label>
@@ -280,37 +289,6 @@
                                     <option value="60-80">Senior Citizen (60-80 Years)</option>
                                     <option value="80+">Super Senior (80+ Years)</option>
                                 </select>
-                            </div>
-                            <div class="form-group" id="deductions-wrapper" style="opacity:0.5;">
-                                <label>Additional Deductions (80C, 80D, etc.)</label>
-                                <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
-                            </div>
-                            <div class="form-row" style="align-items:flex-end;gap:10px;margin-top:20px;">
-                                <div class="form-group" style="flex:2;">
-                                    <label>Asset Block</label>
-                                    <select id="indiv-asset-type" style="padding:12px 15px;">
-                                        <option value="computers">Computers & Software (40% Dep.)</option>
-                                        <option value="furniture">Furniture & Buildings (10% Dep.)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" style="flex:2;">
-                                    <label>Asset Name</label>
-                                    <input type="text" id="indiv-asset-name" placeholder="e.g. Office PC">
-                                </div>
-                                <div class="form-group" style="flex:2;">
-                                    <label>Purchase Value (₹)</label>
-                                    <input type="number" id="indiv-asset-value" placeholder="e.g. 50000" min="0">
-                                </div>
-                                <div class="form-group" style="flex:0.8;margin-bottom:0;">
-                                    <button type="button" class="btn btn-navy-gold" id="btn-add-indiv-asset" style="height:48px;width:100%;padding:0;display:flex;align-items:center;justify-content:center;"><i class="ph ph-plus-circle" style="font-size:1.4rem;"></i></button>
-                                </div>
-                            </div>
-                            <div id="indiv-asset-list-container" class="asset-inventory-container" style="display:none;">
-                                <div class="asset-inventory-title">
-                                    <span>Added Assets Inventory</span>
-                                    <span id="indiv-asset-count" class="asset-badge">0 Assets</span>
-                                </div>
-                                <div class="asset-inventory-list" id="indiv-asset-list"></div>
                             </div>
                         </div>
                         <div class="result-panel">
@@ -346,63 +324,53 @@
                 <div class="testimonials-track" id="testimonialsTrack">
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
-                        <p class="testimonial-text">"Anna, honestly GCS is too good. They registered our company within one week only. No tension, no running around. Everything they handled properly."</p>
-                        <div class="testimonial-name">Ranganathan S., Chennai</div>
+                        <p class="testimonial-text">"I went to Goodwill Consultancy Service for expanding my business. They studied my goals and cleanly suggested to change into a Private Limited company. They didn’t stop with just oral advice, they gave a complete, step-by-step guideline document for implementation. Superb and forward-thinking service!"</p>
+                        <div class="testimonial-name">Synquant Pvt Ltd</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
-                        <p class="testimonial-text">"I was so confused about GST filing. These people explained everything simply and filed on time. No last minute panic at all. Very satisfied! Would have been 5 stars but took a little time initially."</p>
-                        <div class="testimonial-name">Anitha K., Coimbatore</div>
+                        <p class="testimonial-text">"We needed proper guidance on how to start our business together. GCS team completely understood our requirement, correctly suggested a Partnership structure, and drafted a neat partnership deed for us. Very smooth and professional process, no confusion at all."</p>
+                        <div class="testimonial-name">Star Leathers</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
-                        <p class="testimonial-text">"Bank loan was getting rejected again and again. GCS prepared the CMA report and within two weeks our loan got approved. Super happy with the result!"</p>
-                        <div class="testimonial-name">Elango T., Madurai</div>
+                        <p class="testimonial-text">"I had a startup idea but budget was very low. GCS took care of everything from A to Z. They did a simple proprietorship registration at a reasonable cost and made my business fully legal. For new entrepreneurs, they are the best choice!"</p>
+                        <div class="testimonial-name">SNB Bending</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i></div>
-                        <p class="testimonial-text">"I do freelance work so tax filing was always a headache. GCS made it so simple and even helped me save more money. Will definitely come back next year!"</p>
-                        <div class="testimonial-name">Kavin S., Bangalore</div>
+                        <p class="testimonial-text">"We are doing trading business and our billing had so many mistakes and errors previously. Goodwill Consultancy Service sat down, rectified all our issues fully, and gave a clear computation. They also filed all reports on the due date correctly. Excellent support for returns filing!"</p>
+                        <div class="testimonial-name">Siddharth Agency</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
-                        <p class="testimonial-text">"ROC compliance was giving us so much stress every year. Now GCS takes care of everything. We just focus on our business. No more late fees!"</p>
-                        <div class="testimonial-name">Meenakshi S., Trichy</div>
+                        <p class="testimonial-text">"I just gave my salary details to GCS for tax filing. They did the full work very smoothly and filed it with zero legal issues. Absolutely tension-free service. I will surely do my filing here every year."</p>
+                        <div class="testimonial-name">Goutham (Manager)</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
-                        <p class="testimonial-text">"They helped us reduce our company tax legally. Saved good amount of money. Very professional people. Response sometimes a bit slow but work quality is excellent."</p>
-                        <div class="testimonial-name">Balaji S., Chennai</div>
+                        <p class="testimonial-text">"For our business development project, we approached GCS for a CMA report. They prepared a highly professional and detailed report that perfectly showed our growth plans. Very much satisfied with their expertise and timely work!"</p>
+                        <div class="testimonial-name">Varnika Enterprises</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
-                        <p class="testimonial-text">"Our quarterly TDS and P&L reports are always ready on time. No notices, no problems. I trust them fully with all our accounts work."</p>
-                        <div class="testimonial-name">Senthamarai K., Salem</div>
+                        <p class="testimonial-text">"We needed a proper CMA report for an asset purchase in our company, Calibri Co. GCS team did an excellent job, calculated everything perfectly, and delivered the report right on time. Highly recommended for company financial works!"</p>
+                        <div class="testimonial-name">Calibreco</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star-half star-half"></i></div>
-                        <p class="testimonial-text">"I had some property tax issue and got a notice. I was very tensed but GCS sorted it out quickly. Good support and very reasonable charges too."</p>
-                        <div class="testimonial-name">Devika R., Tirunelveli</div>
+                        <p class="testimonial-text">"Managing day-to-day transactions was a big headache for us. But after giving it to GCS, our SBM Impex accounts are in safe hands. They monitor every transaction properly and maintain the books perfectly. Now our accounts are always up-to-date."</p>
+                        <div class="testimonial-name">SBM Impex</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i></div>
-                        <p class="testimonial-text">"Got an income tax notice and didn't know what to do. Called GCS and they handled everything. Notice was closed within few weeks. Absolute lifesavers!"</p>
-                        <div class="testimonial-name">Yogesh P., Erode</div>
+                        <p class="testimonial-text">"I took consultation from GCS for my investments. They planned everything according to my financial capacity—balancing insurance, investments, and savings perfectly. Now I have good financial stability. Very practical advice they gave."</p>
+                        <div class="testimonial-name">Karan (Web Developer)</div>
                     </div>
                     <div class="testimonial-card">
                         <i class="ph-fill ph-quotes quote-icon"></i>
-                        <div class="testimonial-stars"><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph-fill ph-star star-full"></i><i class="ph ph-star star-empty"></i></div>
-                        <p class="testimonial-text">"Investment planning was always confusing for me. GCS sat with me, understood my needs and gave a simple clear plan. Now I know exactly where my money is going!"</p>
-                        <div class="testimonial-name">Preethi V., Pondicherry</div>
+                        <p class="testimonial-text">"If you want real business growth, blindly you can trust them. I discussed with them for my business plans. They didn't just do casual oral talking, but at the end, they gave a complete written draft and roadmap for my business growth. Very useful and highly recommended!"</p>
+                        <div class="testimonial-name">Studio Katkalai</div>
                     </div>
                 </div>
                 <div class="carousel-btns">
@@ -474,8 +442,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="logo.png" alt="GCS Logo" style="height:50px;margin-bottom:1rem;">
-                    <p>Your Vision, Our Financial Stewardship</p>
+                    <a href="index.html"><img src="logo.png" alt="GCS Logo" style="height:50px;margin-bottom:0.5rem;background:transparent;"></a>
+                    <h3 style="color:var(--white);font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;font-family:var(--font-heading);">Goodwill Consultancy Service</h3>
+                    <p style="font-size:0.85rem;color:var(--gold);font-style:italic;margin:0;">Your Vision, Our Financial Stewardship</p>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
@@ -489,8 +458,8 @@
                 <div class="footer-col">
                     <h4>Contact Us</h4>
                     <ul>
-                        <li>+91 93634 76100</li>
-                        <li>info@goodwillconsultancyservice.com</li>
+                        <li><a href="tel:+919363476100" style="color:inherit;text-decoration:none;">+91 93634 76100</a></li>
+                        <li><a href="mailto:info@goodwillconsultancyservice.com" style="color:inherit;text-decoration:none;">info@goodwillconsultancyservice.com</a></li>
                         <li><a href="https://maps.google.com/?q=No.1,+1st+Floor,+Veerasamy+St,+Periamet,+Park+Town,+Chennai,+Tamil+Nadu+600003,+India" target="_blank" style="color:inherit;text-decoration:none;">No.1, 1st Floor, Veerasamy St, Chennai 600003</a></li>
                     </ul>
                 </div>
