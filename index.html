@@ -18,9 +18,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=70" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80" media="(min-width: 769px)">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-06ZTJ04V1C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -30,6 +34,21 @@
     </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <style>
+        .slide-1 { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80'); }
+        .slide-2 { background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80'); }
+        .slide-3 { background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=80'); }
+        .slide-4 { background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80'); }
+        .slide-5 { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80'); }
+        @media (max-width: 768px) {
+            .slide-1 { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=70'); }
+            .slide-2 { background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=70'); }
+            .slide-3 { background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=70'); }
+            .slide-4 { background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=70'); }
+            .slide-5 { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=70'); }
+        }
+    </style>
     <style>
         /* Mission/Vision */
         .mission-vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
@@ -130,11 +149,11 @@
     <!-- Hero Section with Background Carousel -->
     <section id="home" class="hero">
         <div class="hero-bg-carousel" id="heroBgCarousel">
-            <div class="hero-bg-slide active" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80');"></div>
-            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80');"></div>
-            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=80');"></div>
-            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80');"></div>
-            <div class="hero-bg-slide" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80');"></div>
+            <div class="hero-bg-slide active slide-1"></div>
+            <div class="hero-bg-slide slide-2"></div>
+            <div class="hero-bg-slide slide-3"></div>
+            <div class="hero-bg-slide slide-4"></div>
+            <div class="hero-bg-slide slide-5"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">

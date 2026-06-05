@@ -212,8 +212,14 @@ section {
     min-height: 600px;
     display: flex;
     align-items: center;
-    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
     padding: 0;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=70&w=600') center/cover no-repeat;
+    }
 }
 
 .hero-overlay {
