@@ -45,7 +45,7 @@
                 </div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-toggle">
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
                 <i class="ph ph-list"></i>
             </button>
 
@@ -89,20 +89,20 @@
                             </div>
                             
                             <div class="form-group">
-                                <label>Annual Gross Salary (₹)</label>
+                                <label for="indiv-income">Annual Gross Salary (₹)</label>
                                 <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
                             </div>
                             <div class="form-group">
-                                <label>Exempt Allowances (HRA, LTA, etc.) (₹)</label>
+                                <label for="indiv-allowance">Exempt Allowances (HRA, LTA, etc.) (₹)</label>
                                 <input type="number" id="indiv-allowance" placeholder="e.g. 100000" min="0">
                             </div>
                             <div class="form-group" id="deductions-wrapper" style="opacity: 0.5;">
-                                <label>Additional Deductions (80C, 80D, etc.) (₹)</label>
+                                <label for="indiv-deductions">Additional Deductions (80C, 80D, etc.) (₹)</label>
                                 <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
                                 <span class="help-text">Standard deduction of ₹75,000 (New) / ₹50,000 (Old) is auto-applied for salaried.</span>
                             </div>
                             <div class="form-group">
-                                <label>Age Group</label>
+                                <label for="indiv-age">Age Group</label>
                                 <select id="indiv-age">
                                     <option value="<60">Below 60 Years</option>
                                     <option value="60-80">Senior Citizen (60-80 Years)</option>
@@ -267,10 +267,10 @@
                 <div class="footer-col">
                     <h4>Follow Us</h4>
                     <div class="footer-social-icons">
-                        <a href="https://wa.me/919363476100" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                        <a href="mailto:info@goodwillconsultancyservice.com"><i class="ph-fill ph-envelope"></i></a>
-                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="https://wa.me/919363476100" target="_blank" aria-label="Contact us on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                        <a href="mailto:info@goodwillconsultancyservice.com" aria-label="Send us an Email"><i class="ph-fill ph-envelope"></i></a>
+                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" aria-label="Follow us on Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" aria-label="Connect on LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
                     </div>
                 </div>
             </div>

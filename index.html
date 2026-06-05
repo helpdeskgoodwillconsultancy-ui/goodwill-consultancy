@@ -133,7 +133,7 @@
                     <p style="font-size:0.75rem;color:var(--gold);font-style:italic;margin:2px 0 0 0;font-family:var(--font-body);">Your Vision, Our Financial Stewardship</p>
                 </div>
             </a>
-            <button class="mobile-toggle" id="mobile-toggle"><i class="ph ph-list"></i></button>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu"><i class="ph ph-list"></i></button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
@@ -229,10 +229,10 @@
         <div class="container">
             <div class="section-header text-center animate-fade-up"><h2>Why Choose GCS?</h2></div>
             <div class="why-grid">
-                <div class="why-card animate-fade-up"><div class="why-num">01</div><h4>Expertise Across Domains</h4><p>Tax, Finance, Legal & Business Strategy under one roof.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">02</div><h4>Tailored Solutions</h4><p>Because no two businesses are the same.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">03</div><h4>End-to-End Support</h4><p>From registration to sustained growth.</p></div>
-                <div class="why-card animate-fade-up"><div class="why-num">04</div><h4>Transparency & Reliability</h4><p>We believe in building trust before numbers.</p></div>
+                <div class="why-card animate-fade-up"><div class="why-num">01</div><h3>Expertise Across Domains</h3><p>Tax, Finance, Legal & Business Strategy under one roof.</p></div>
+                <div class="why-card animate-fade-up"><div class="why-num">02</div><h3>Tailored Solutions</h3><p>Because no two businesses are the same.</p></div>
+                <div class="why-card animate-fade-up"><div class="why-num">03</div><h3>End-to-End Support</h3><p>From registration to sustained growth.</p></div>
+                <div class="why-card animate-fade-up"><div class="why-num">04</div><h3>Transparency & Reliability</h3><p>We believe in building trust before numbers.</p></div>
             </div>
             <div class="text-center mt-3 animate-fade-up">
                 <p><strong>Would you trust your growth with just anyone, or with experts who understand both your compliance and your vision?</strong></p>
@@ -292,19 +292,19 @@
                             </div>
 
                             <div class="form-group" style="margin-top:1rem;">
-                                <label>Annual Gross Salary (₹)</label>
+                                <label for="indiv-income">Annual Gross Salary (₹)</label>
                                 <input type="number" id="indiv-income" placeholder="e.g. 1200000" min="0">
                             </div>
                             <div class="form-group">
-                                <label>Exempt Allowances (HRA, LTA, etc.) (₹)</label>
+                                <label for="indiv-allowance">Exempt Allowances (HRA, LTA, etc.) (₹)</label>
                                 <input type="number" id="indiv-allowance" placeholder="e.g. 100000" min="0">
                             </div>
                             <div class="form-group" id="deductions-wrapper" style="opacity:0.5;">
-                                <label>Additional Deductions (80C, 80D, etc.) (₹)</label>
+                                <label for="indiv-deductions">Additional Deductions (80C, 80D, etc.) (₹)</label>
                                 <input type="number" id="indiv-deductions" placeholder="e.g. 150000" min="0" disabled>
                             </div>
                             <div class="form-group">
-                                <label>Age Group</label>
+                                <label for="indiv-age">Age Group</label>
                                 <select id="indiv-age">
                                     <option value="<60">Below 60 Years</option>
                                     <option value="60-80">Senior Citizen (60-80 Years)</option>
@@ -425,14 +425,14 @@
                 </div>
                 <div class="contact-form-container animate-fade-up">
                     <form class="contact-form" id="contact-form" method="POST">
-                        <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
+                        <div class="form-group"><label for="contact-name">Full Name</label><input type="text" id="contact-name" name="name" required></div>
                         <div class="form-row">
-                            <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-                            <div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
+                            <div class="form-group"><label for="contact-email">Email</label><input type="email" id="contact-email" name="email" required></div>
+                            <div class="form-group"><label for="contact-phone">Phone</label><input type="tel" id="contact-phone" name="phone" required></div>
                         </div>
                         <div class="form-group">
-                            <label>Service</label>
-                            <select name="service" required>
+                            <label for="contact-service">Service</label>
+                            <select id="contact-service" name="service" required>
                                 <option value="">Select a service</option>
                                 <option>Company Registration</option>
                                 <option>Book-keeping</option>
@@ -443,7 +443,7 @@
                                 <option>Other</option>
                             </select>
                         </div>
-                        <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
+                        <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="4" required></textarea></div>
                         <button type="submit" class="btn btn-navy-gold">Send Message &rarr;</button>
                     </form>
                 </div>
@@ -487,10 +487,10 @@
                 <div class="footer-col">
                     <h4>Follow Us</h4>
                     <div class="footer-social-icons">
-                        <a href="https://wa.me/919363476100" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                        <a href="mailto:info@goodwillconsultancyservice.com"><i class="ph-fill ph-envelope"></i></a>
-                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="https://wa.me/919363476100" target="_blank" aria-label="Contact us on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                        <a href="mailto:info@goodwillconsultancyservice.com" aria-label="Send us an Email"><i class="ph-fill ph-envelope"></i></a>
+                        <a href="https://www.instagram.com/goodwillconsultancyservice/" target="_blank" aria-label="Follow us on Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://www.linkedin.com/company/goodwill-consultancy-service" target="_blank" aria-label="Connect on LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
                     </div>
                 </div>
             </div>
@@ -503,7 +503,7 @@
     <script id="popup-script-source" src="js/popup.js"></script>
     <div class="popup-overlay" id="converter-popup">
         <div class="popup-modal">
-            <button class="popup-close" id="popup-close"><i class="ph ph-x"></i></button>
+            <button class="popup-close" id="popup-close" aria-label="Close Popup"><i class="ph ph-x"></i></button>
             <div id="popup-content"></div>
         </div>
     </div>

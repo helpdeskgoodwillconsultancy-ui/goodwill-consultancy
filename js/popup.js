@@ -155,16 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 class="mb-1">Where should we send your results?</h3>
                 <form id="popup-contact-form">
                     <div class="form-group">
-                        <input type="text" id="pc-name" placeholder="Full Name" required>
+                        <input type="text" id="pc-name" placeholder="Full Name" aria-label="Full Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="pc-phone" placeholder="Mobile Number" required>
+                        <input type="tel" id="pc-phone" placeholder="Mobile Number" aria-label="Mobile Number" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="pc-email" placeholder="Email Address" required>
+                        <input type="email" id="pc-email" placeholder="Email Address" aria-label="Email Address" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="pc-biz" placeholder="Business Name (Optional)">
+                        <input type="text" id="pc-biz" placeholder="Business Name (Optional)" aria-label="Business Name (Optional)">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Get my free consultation &rarr;</button>
                 </form>
