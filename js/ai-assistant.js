@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Let us handle the numbers so you can focus on growing your business.`
         },
         {
-            keys: ['advisory', 'loans', 'cma', 'project report', 'business plan', 'financial planning', 'reporting', 'valuation'],
+            keys: ['advisory', 'loans', 'cma', 'project report', 'business plan', 'financial planning', 'reporting', 'valuation', 'analysis', 'financial'],
             response: `We offer high-end **Financial Advisory & Planning** services:<br>
             • Project Reports & CMA Reports for bank loans<br>
             • Cash Flow planning & Working Capital management<br>
