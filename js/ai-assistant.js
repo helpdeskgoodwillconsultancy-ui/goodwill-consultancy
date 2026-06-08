@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Chat Knowledge Base & Dialogue Router
     const knowledgeBase = [
         {
-            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn', 'filing', 'gstin'],
+            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn', 'filing', 'gstin', 'invoice', 'bill', 'threshold', 'gst certificate', 'certificate', 'gstr1', 'gstr3b', 'export', 'lut', 'refund', 'gst rate', 'gst slab', 'eway', 'waybill', 'composition', 'gstr-1', 'gstr-3b', 'gstr-9', 'gstr-9c'],
             response: `We provide complete **GST (Goods & Services Tax) Services**:<br>
             • New GST Registration & Amendments<br>
             • Monthly/Quarterly Return Filing (GSTR-1, GSTR-3B)<br>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Need to get registered or file your return? Check our <a href="services.html">Services page</a>.`
         },
         {
-            keys: ['tax', 'income tax', 'itr', 'tds', 'calculator', 'tax liability', 'computation', 'regime', 'standard deduction', 'depreciation'],
+            keys: ['tax', 'income tax', 'itr', 'tds', 'calculator', 'tax liability', 'computation', 'regime', 'standard deduction', 'depreciation', 'slab', 'direct tax', 'salary', 'salaried', 'corporate tax', 'capital gains', 'form 16', 'home loan', 'savings', 'itr1', 'itr2', 'itr3', 'itr4', 'advance tax', 'tax refund', 'deduction', '80c', '80d'],
             response: `We handle all **Direct Taxation & Income Tax** matters:<br>
             • Individual & Corporate ITR Filing<br>
             • TDS/TCS Return filing & Form 16 reconciliation<br>
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             👉 Check out our custom interactive <a href="tax-calculator.html">Income Tax Calculator</a> to estimate your tax liability under the New Regime!`
         },
         {
-            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship', 'incorporate', 'directors', 'din', 'dsc'],
+            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship', 'incorporate', 'directors', 'din', 'dsc', 'private limited', 'one person company', 'sole proprietorship', 'business registration', 'register business', 'name approval', 'pan', 'tan', 'udyam', 'msme', 'moa', 'aoa', 'fssai'],
             response: `Want to register your business? We offer end-to-end **Company Incorporation & Startup Registrations**:<br>
             • Private Limited Company setup<br>
             • Limited Liability Partnership (LLP)<br>
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             We take care of name approvals, DSC, Director DINs, PAN, and TAN applications.`
         },
         {
-            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l', 'statutory', 'ledger'],
+            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l', 'statutory', 'ledger', 'profit', 'loss', 'financial statement', 'internal audit', 'tax audit', 'internal control', 'reconciliation', 'ledger maintenance'],
             response: `Keep your business books clean and compliant. Our **Auditing & Bookkeeping Services** include:<br>
             • Comprehensive Bookkeeping (Tally/Cloud accounting)<br>
             • Preparation of Balance Sheets & Profit & Loss statements<br>
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Let us handle the numbers so you can focus on growing your business.`
         },
         {
-            keys: ['advisory', 'loans', 'cma', 'project report', 'business plan', 'financial planning', 'reporting', 'valuation', 'analysis', 'financial'],
+            keys: ['advisory', 'loans', 'cma', 'project report', 'business plan', 'financial planning', 'reporting', 'valuation', 'analysis', 'financial', 'financial analysis', 'funding', 'capital', 'bank loan', 'forecast', 'projection', 'stewardship', 'cash flow', 'working capital'],
             response: `We offer high-end **Financial Advisory & Planning** services:<br>
             • Project Reports & CMA Reports for bank loans<br>
             • Cash Flow planning & Working Capital management<br>
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Get strategic advice to grow your business successfully.`
         },
         {
-            keys: ['contact', 'phone', 'whatsapp', 'email', 'number', 'address', 'location', 'office', 'hour', 'find you', 'where'],
+            keys: ['contact', 'phone', 'whatsapp', 'email', 'number', 'address', 'location', 'office', 'hour', 'find you', 'where', 'maps', 'navigation', 'mobile', 'telephone', 'email address', 'hours'],
             response: `Here are the official contact details for **Goodwill Consultancy Service**:<br>
             • 📞 **Phone/WhatsApp**: <a href="https://wa.me/919363476100" target="_blank">+91 93634 76100</a><br>
             • ✉️ **Email**: <a href="mailto:info@goodwillconsultancyservice.com">info@goodwillconsultancyservice.com</a><br>
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             You can also send us a message via the form at the bottom of the home page!`
         },
         {
-            keys: ['security', 'safe', 'bot', 'password', 'otp', 'credential', 'hack', 'login', 'leak'],
+            keys: ['security', 'safe', 'bot', 'password', 'otp', 'credential', 'hack', 'login', 'leak', 'secure', 'fraud', 'phishing', 'pin'],
             response: `🛡️ **Security Alert**: Goodwill Consultancy Service takes your privacy seriously.<br>
             • We will **NEVER** ask you for sensitive passwords, OTPs, or bank account credentials over chat.<br>
             • Never share your personal logins with anyone.<br>
