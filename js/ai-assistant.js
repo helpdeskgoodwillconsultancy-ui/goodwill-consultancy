@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             response: `Here are the official contact details for **Goodwill Consultancy Service**:<br>
             • 📞 **Phone/WhatsApp**: <a href="https://wa.me/919363476100" target="_blank">+91 93634 76100</a><br>
             • ✉️ **Email**: <a href="mailto:info@goodwillconsultancyservice.com">info@goodwillconsultancyservice.com</a><br>
-            • 📍 **Location**: Tamil Nadu, India.<br><br>
+            • 📍 **Location**: <a href="https://maps.app.goo.gl/djnj1EcMatT7d93n7" target="_blank">No.1, 1st Floor, Veerasamy St, Chennai 600003</a><br><br>
             You can also send us a message via the form at the bottom of the home page!`
         },
         {
@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         msgDiv.className = `chat-msg ${sender}`;
         
         if (isHtml) {
-            // Parse markdown double asterisks to bold and single asterisks to italic
+            // Parse markdown double asterisks to bold and single asterisks to italic (multiline safe)
             const formattedText = text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+                .replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*([\s\S]*?)\*/g, '<em>$1</em>');
             msgDiv.innerHTML = formattedText;
         } else {
             msgDiv.textContent = text;
