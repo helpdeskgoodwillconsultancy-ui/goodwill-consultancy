@@ -154,7 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
         msgDiv.className = `chat-msg ${sender}`;
         
         if (isHtml) {
-            msgDiv.innerHTML = text;
+            // Parse markdown double asterisks to bold and single asterisks to italic
+            const formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+            msgDiv.innerHTML = formattedText;
         } else {
             msgDiv.textContent = text;
         }
