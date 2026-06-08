@@ -81,39 +81,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Chat Knowledge Base & Dialogue Router
     const knowledgeBase = [
         {
-            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship', 'incorporate', 'directors', 'din', 'dsc', 'private limited', 'one person company', 'sole proprietorship', 'business registration', 'register business', 'name approval', 'pan', 'tan', 'udyam', 'msme', 'moa', 'aoa', 'fssai'],
+            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship', 'incorporate', 'directors', 'din', 'dsc', 'private limited', 'one person company', 'sole proprietorship', 'business registration', 'register business', 'name approval', 'pan', 'tan', 'udyam', 'msme', 'moa', 'aoa', 'fssai', 'firm', 'mca', 'incorporating', 'incorporation services', 'ministry of corporate affairs', 'register business name', 'incorporate business'],
             response: `We offer seamless **Company Registration Services** for:<br>• Private Limited Companies, LLPs, Proprietorships, Partnerships, and One-Person Companies (OPC).<br>• DSC & DIN registrations, MCA name approvals, PAN/TAN, and ROC compliance setups.<br>⏱️ *Timeline*: Usually completed in 7-10 working days.<br>👉 Learn more on our <a href="services.html">Services page</a>.`
         },
         {
-            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l', 'statutory', 'ledger', 'profit', 'loss', 'financial statement', 'internal audit', 'tax audit', 'internal control', 'reconciliation', 'ledger maintenance', 'accounts'],
+            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l', 'statutory', 'ledger', 'profit', 'loss', 'financial statement', 'internal audit', 'tax audit', 'internal control', 'reconciliation', 'ledger maintenance', 'accounts', 'book keeper', 'daily transactions', 'invoices', 'payables', 'receivables', 'accountant', 'corporate accounts', 'ledger book'],
             response: `Keep your books accurate and up-to-date with our **Accounts & Bookkeeping Services**:<br>• Daily transaction recording & ledger maintenance.<br>• Preparation of Trial Balances, Balance Sheets, & P&L statements.<br>• Managing payables, receivables, invoice processing, and corporate MIS reporting.<br>👉 Check out our bookkeeping services on the <a href="services.html">Services page</a>.`
         },
         {
-            keys: ['tax', 'income tax', 'itr', 'calculator', 'tax liability', 'computation', 'regime', 'standard deduction', 'depreciation', 'slab', 'direct tax', 'salary', 'salaried', 'corporate tax', 'capital gains', 'form 16', 'home loan', 'savings', 'itr1', 'itr2', 'itr3', 'itr4', 'advance tax', 'tax refund', 'deduction', '80c', '80d', '234f'],
+            keys: ['tax', 'income tax', 'itr', 'calculator', 'tax liability', 'computation', 'regime', 'standard deduction', 'depreciation', 'slab', 'direct tax', 'salary', 'salaried', 'corporate tax', 'capital gains', 'form 16', 'home loan', 'savings', 'itr1', 'itr2', 'itr3', 'itr4', 'advance tax', 'tax refund', 'deduction', '80c', '80d', '234f', 'tax planning', 'income tax return', 'tax return', 'late fee', 'tax benefits', 'late penalty', 'file returns', 'file tax', 'financial portfolio'],
             response: `We handle comprehensive **Income Tax Filing** u/s slabs for individuals and corporations:<br>• Individual ITR (salaried, consultants, & freelancers) and business corporate ITR.<br>• Advance tax planning & tax computation.<br>• Handling tax notices & representation u/s 234F assessments.<br>📊 *Calculator*: Estimate your liabilities u/s slabs using our interactive <a href="tax-calculator.html">Income Tax Calculator</a>.`
         },
         {
-            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn', 'filing', 'gstin', 'invoice', 'bill', 'threshold', 'gst certificate', 'certificate', 'gstr1', 'gstr3b', 'export', 'lut', 'refund', 'gst rate', 'gst slab', 'eway', 'waybill', 'composition', 'gstr-1', 'gstr-3b', 'gstr-9', 'gstr-9c', 'credit', 'itc', 'gstr-2a', 'gstr-2b'],
+            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn', 'filing', 'gstin', 'invoice', 'bill', 'threshold', 'gst certificate', 'certificate', 'gstr1', 'gstr3b', 'export', 'lut', 'refund', 'gst rate', 'gst slab', 'eway', 'waybill', 'composition', 'gstr-1', 'gstr-3b', 'gstr-9', 'gstr-9c', 'credit', 'itc', 'gstr-2a', 'gstr-2b', 'gst return', 'input tax credit', 'gst portal', 'gst audit', 'gst compliance', 'gst classification'],
             response: `Avoid late fees and maximize Input Tax Credit with our **GST Services**:<br>• New GST registrations and GSTR-1 & GSTR-3B filings.<br>• Monthly/quarterly ITC reconciliation (GSTR-2A/2B).<br>• Annual returns (GSTR-9 & 9C) and GST notice handling.<br>👉 Find full GST details on our <a href="services.html">Services page</a>.`
         },
         {
-            keys: ['tds', 'tds filing', 'quarterly tds', 'form 24q', 'form 26q', 'form 27q', '24q', '26q', '27q', 'tds challan', 'non-deduction', 'supplier tax credit', '16', '16a', 'form 16a'],
+            keys: ['tds', 'tds filing', 'quarterly tds', 'form 24q', 'form 26q', 'form 27q', '24q', '26q', '27q', 'tds challan', 'non-deduction', 'supplier tax credit', '16', '16a', 'form 16a', 'tax deducted at source', 'tds payment', 'tds return', 'tds credit', 'tds rate', 'tds returns', 'delayed challan', 'tds consultant'],
             response: `Ensure error-free compliance with our **TDS Calculation & Filing Services**:<br>• Quarterly returns (Form 24Q, 26Q, 27Q) for salaries and contracts.<br>• Challan reconciliation, PAN verifications, and Form 16/16A generations.<br>• Avoid interest penalties (1%-1.5%) and late filing fees (₹200/day).`
         },
         {
-            keys: ['cma', 'cma projection', 'loan projection', 'project report', 'bank project', 'bank loan support', 'dscr', 'current ratio', 'repayment schedules', 'term loans', 'working capital loan'],
+            keys: ['cma', 'cma projection', 'loan projection', 'project report', 'bank project', 'bank loan support', 'dscr', 'current ratio', 'repayment schedules', 'term loans', 'working capital loan', 'cma data', 'repayment schedule', 'bank loan cma', 'loan projections', 'debt service', 'nbfc', 'project reports', 'term loan'],
             response: `Get your bank loans approved confidently with our **CMA Projection & Project Reports**:<br>• Bank-compliant CMA data & TERM/Working Capital loan projections.<br>• Detailed mapping of DSCR, Quick Ratio, break-even analysis, and repayment models.<br>• Custom CMA formats trusted by NBFCs and national banks.`
         },
         {
-            keys: ['financial analysis', 'planning', 'wealth creation', 'mis preparation', 'wealth planning', 'wealth advisor', 'capital growth', 'mis reports', 'p&l statement', 'statement prep'],
+            keys: ['financial analysis', 'planning', 'wealth creation', 'mis preparation', 'wealth planning', 'wealth advisor', 'capital growth', 'mis reports', 'p&l statement', 'statement prep', 'financial forecasting', 'mis report', 'financial statement preparation', 'wealth strategies', 'investment advisor', 'balance sheets preparation', 'financial decks', 'capital growth advisory'],
             response: `Secure your financial future with our **Financial Analysis & Strategic Planning**:<br>• Wealth creation & tax-saving investment advisory (u/s 80C, 80D, etc.).<br>• Custom tax savings mapping and monthly Management Information Systems (MIS) setups.<br>• Investor-ready deck preparation & audited financial statements.`
         },
         {
-            keys: ['roc', 'roc compliance', 'annual compliance', 'mgt-7', 'aoc-4', 'dir-12', 'companies act', 'statutory register', 'resolutions', 'mca database', 'mca return', 'active status'],
+            keys: ['roc', 'roc compliance', 'annual compliance', 'mgt-7', 'aoc-4', 'dir-12', 'companies act', 'statutory register', 'resolutions', 'mca database', 'mca return', 'active status', 'registrar of companies', 'mgt7', 'aoc4', 'dir12', 'board resolutions', 'director resignation', 'share transfer', 'statutory resolutions'],
             response: `Avoid director disqualifications (u/s 164) and MCA penalties with our **ROC Compliance Services**:<br>• Filing Annual Returns (Form MGT-7) & Financial Statements (Form AOC-4).<br>• Director appointment/resignation updates (DIR-12) & share transfers.<br>• Maintenance of statutory registers u/s Companies Act & meeting minutes.`
         },
         {
-            keys: ['consulting', 'business consulting', 'scaling', 'cost optimization', 'startup advisor', 'tax strategist', 'scaling consulting', 'bottlenecks', 'exit strategies', 'transaction advisory'],
+            keys: ['consulting', 'business consulting', 'scaling', 'cost optimization', 'startup advisor', 'tax strategist', 'scaling consulting', 'bottlenecks', 'exit strategies', 'transaction advisory', 'business strategy', 'operational optimization', 'scaling advisor', 'startup consultant', 'cost structuring', 'scaling advisory', 'exit planning', 'transaction structuring'],
             response: `Drive sustainable growth with our **Business Consulting & Advisory**:<br>• Startup modeling, legal structuring, and cost optimization audits.<br>• Cash flow efficiency plans & transaction tax structuring.<br>• Scaling maps, bottleneck analysis, and exit strategies.<br>👉 Learn more on our <a href="services.html">Services page</a>.`
         },
         {
