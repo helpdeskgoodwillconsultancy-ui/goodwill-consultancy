@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chatWindow.innerHTML = `
         <div class="ai-chat-header">
             <div class="ai-chat-header-info">
-                <div class="ai-chat-avatar">GW</div>
+                <div class="ai-chat-avatar"><img src="logo.png" alt="Goodwill Logo"></div>
                 <div class="ai-chat-title-container">
                     <span class="ai-chat-title">Goodwill Assistant</span>
                     <span class="ai-chat-status">Online</span>
