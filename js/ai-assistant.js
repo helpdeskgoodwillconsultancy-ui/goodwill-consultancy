@@ -187,6 +187,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function containsVulnerabilityKeywords(query) {
+        const vulKeys = ['vulnerability', 'exploit', 'hack', 'penetration', 'sql injection', 'xss', 'ddos', 'security bypass', 'backdoor', 'cve', 'malware', 'injection', 'phishing', 'payload'];
+        return vulKeys.some(key => query.includes(key));
+    }
+
+    const contactTagline = `<br><br>📩 *Our Team will contact you, kindly fill <a href="index.html#contact">this form</a>.*`;
+
+    function fallbackToRules(cleanQuery) {
+        let foundResponse = null;
+        for (const item of knowledgeBase) {
+            const matches = item.keys.some(key => cleanQuery.includes(key));
+            if (matches) {
+                foundResponse = item.response;
+                break;
+            }
+        }
+
+        if (foundResponse) {
+            appendMessage('bot', foundResponse + contactTagline, true);
+        } else {
+            appendMessage('bot', fallbackResponse + contactTagline, true);
+        }
+    }
+
     function generateResponse(query) {
         const cleanQuery = query.toLowerCase().trim();
         if (!cleanQuery) return;
@@ -194,26 +218,38 @@ document.addEventListener('DOMContentLoaded', () => {
         isTyping = true;
         showTypingIndicator();
 
-        // Simulate thinking delay (600ms - 1200ms) for organic premium feel
-        setTimeout(() => {
+        // 1. Check for security/vulnerability questions locally to prevent vulnerability explanations
+        if (containsVulnerabilityKeywords(cleanQuery)) {
+            setTimeout(() => {
+                removeTypingIndicator();
+                isTyping = false;
+                appendMessage('bot', `I cannot assist with queries regarding website vulnerabilities, penetration testing, or security bypasses.` + contactTagline, true);
+            }, 600);
+            return;
+        }
+
+        // 2. Try to fetch from the Google Apps Script LLM proxy (learning model)
+        fetch('https://script.google.com/macros/s/AKfycbw5DwFAlRINSP8p3XBK54NOGRLLo5T4p4AJnpZENYxsrDcjt750Qiz8w0dt1xjy_18EQw/exec', {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify({ action: 'chat', message: query })
+        })
+        .then(response => response.json())
+        .then(data => {
             removeTypingIndicator();
             isTyping = false;
-
-            let foundResponse = null;
-            for (const item of knowledgeBase) {
-                const matches = item.keys.some(key => cleanQuery.includes(key));
-                if (matches) {
-                    foundResponse = item.response;
-                    break;
-                }
-            }
-
-            if (foundResponse) {
-                appendMessage('bot', foundResponse, true);
+            
+            if (data && data.reply) {
+                appendMessage('bot', data.reply + contactTagline, true);
             } else {
-                appendMessage('bot', fallbackResponse, true);
+                fallbackToRules(cleanQuery);
             }
-        }, 800 + Math.random() * 400);
+        })
+        .catch(() => {
+            removeTypingIndicator();
+            isTyping = false;
+            fallbackToRules(cleanQuery);
+        });
     }
 
     function handleSend() {
@@ -254,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (messagesContainer.children.length === 0) {
                 appendMessage('bot', `Hello! Welcome to **Goodwill Consultancy Service**. 👋<br><br>
                 How can I assist you today with taxation, corporate filings, or financial advisory?<br><br>
-                🔒 *Security Notice: We will never request sensitive bank account details, OTPs, or account credentials.*`, true);
+                🔒 *Security Notice: We will never request sensitive bank account details, OTPs, or account credentials.*` + contactTagline, true);
                 renderChips(initialChips);
             }
             inputField.focus();
