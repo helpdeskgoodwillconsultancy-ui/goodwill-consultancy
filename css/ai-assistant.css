@@ -351,3 +351,31 @@
         padding: 12px 15px;
     }
 }
+
+/* Styling for AI chat trigger inside the floating socials stack */
+.floating-socials .ai-chat-trigger {
+    position: static; /* Let flexbox column position it */
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border: 2px solid var(--gold);
+    color: var(--gold) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    margin-top: 5px; /* Slight spacing below the last social icon */
+}
+
+.floating-socials .ai-chat-trigger:hover {
+    transform: scale(1.15);
+    background: var(--navy-light);
+    color: var(--white) !important;
+}
+
+/* Position adjustment for notification dot in smaller stack button */
+.floating-socials .ai-chat-trigger::after {
+    top: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+}

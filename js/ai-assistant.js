@@ -4,38 +4,72 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Create and Inject Widget DOM Structure dynamically to avoid repeating HTML in every file
-    const chatContainer = document.createElement('div');
-    chatContainer.id = 'ai-assistant-container';
-    chatContainer.innerHTML = `
-        <button class="ai-chat-trigger" id="ai-chat-trigger" aria-label="Open AI Assistant" title="Open AI Assistant">
-            <i class="ph-fill ph-chat-circle-dots"></i>
-        </button>
-        <div class="ai-chat-window" id="ai-chat-window" role="dialog" aria-label="Goodwill AI Assistant">
-            <div class="ai-chat-header">
-                <div class="ai-chat-header-info">
-                    <div class="ai-chat-avatar">GW</div>
-                    <div class="ai-chat-title-container">
-                        <span class="ai-chat-title">Goodwill Assistant</span>
-                        <span class="ai-chat-status">Online</span>
-                    </div>
+    // 1. Create and Inject Widget DOM Structure dynamically
+    // First, find or create the unified floating socials container
+    let socialsContainer = document.querySelector('.floating-socials');
+    
+    if (!socialsContainer) {
+        const waFloat = document.querySelector('.whatsapp-float');
+        if (waFloat) {
+            // Create container and insert before the original float button
+            socialsContainer = document.createElement('div');
+            socialsContainer.className = 'floating-socials';
+            waFloat.parentNode.insertBefore(socialsContainer, waFloat);
+            
+            // Restyle the standalone whatsapp float to match the list style
+            waFloat.className = 'float-btn whatsapp';
+            waFloat.style.position = 'static';
+            waFloat.style.width = '45px';
+            waFloat.style.height = '45px';
+            waFloat.style.fontSize = '1.4rem';
+            socialsContainer.appendChild(waFloat);
+        } else {
+            // Fallback if neither exists
+            socialsContainer = document.createElement('div');
+            socialsContainer.className = 'floating-socials';
+            document.body.appendChild(socialsContainer);
+        }
+    }
+
+    // Create the AI Trigger button
+    const triggerBtn = document.createElement('button');
+    triggerBtn.className = 'float-btn ai-chat-trigger';
+    triggerBtn.id = 'ai-chat-trigger';
+    triggerBtn.setAttribute('aria-label', 'Open AI Assistant');
+    triggerBtn.setAttribute('title', 'Open AI Assistant');
+    triggerBtn.innerHTML = '<i class="ph-fill ph-chat-circle-dots"></i>';
+    
+    // Append triggerBtn as the last child inside the social stack (so it sits at the bottom)
+    socialsContainer.appendChild(triggerBtn);
+
+    // Create the Chat Window container
+    const chatWindow = document.createElement('div');
+    chatWindow.className = 'ai-chat-window';
+    chatWindow.id = 'ai-chat-window';
+    chatWindow.setAttribute('role', 'dialog');
+    chatWindow.setAttribute('aria-label', 'Goodwill AI Assistant');
+    chatWindow.innerHTML = `
+        <div class="ai-chat-header">
+            <div class="ai-chat-header-info">
+                <div class="ai-chat-avatar">GW</div>
+                <div class="ai-chat-title-container">
+                    <span class="ai-chat-title">Goodwill Assistant</span>
+                    <span class="ai-chat-status">Online</span>
                 </div>
-                <button class="ai-chat-close" id="ai-chat-close" aria-label="Close Chat">&times;</button>
             </div>
-            <div class="ai-chat-messages" id="ai-chat-messages"></div>
-            <div class="ai-chat-chips-container" id="ai-chat-chips"></div>
-            <div class="ai-chat-input-bar">
-                <input type="text" id="ai-chat-input" placeholder="Ask a question..." maxlength="200" autocomplete="off" aria-label="Chat input text">
-                <button class="ai-chat-send-btn" id="ai-chat-send" aria-label="Send message">
-                    <i class="ph-fill ph-paper-plane-right"></i>
-                </button>
-            </div>
+            <button class="ai-chat-close" id="ai-chat-close" aria-label="Close Chat">&times;</button>
+        </div>
+        <div class="ai-chat-messages" id="ai-chat-messages"></div>
+        <div class="ai-chat-chips-container" id="ai-chat-chips"></div>
+        <div class="ai-chat-input-bar">
+            <input type="text" id="ai-chat-input" placeholder="Ask a question..." maxlength="200" autocomplete="off" aria-label="Chat input text">
+            <button class="ai-chat-send-btn" id="ai-chat-send" aria-label="Send message">
+                <i class="ph-fill ph-paper-plane-right"></i>
+            </button>
         </div>
     `;
-    document.body.appendChild(chatContainer);
+    document.body.appendChild(chatWindow);
 
-    const triggerBtn = document.getElementById('ai-chat-trigger');
-    const chatWindow = document.getElementById('ai-chat-window');
     const closeBtn = document.getElementById('ai-chat-close');
     const messagesContainer = document.getElementById('ai-chat-messages');
     const inputField = document.getElementById('ai-chat-input');
