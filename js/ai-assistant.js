@@ -81,16 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Chat Knowledge Base & Dialogue Router
     const knowledgeBase = [
         {
-            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn'],
+            keys: ['gst', 'indirect tax', 'gstr', 'cgst', 'sgst', 'hsn', 'filing', 'gstin'],
             response: `We provide complete **GST (Goods & Services Tax) Services**:<br>
             • New GST Registration & Amendments<br>
             • Monthly/Quarterly Return Filing (GSTR-1, GSTR-3B)<br>
             • Annual Returns (GSTR-9 & 9C Reconciliation)<br>
             • GST LUT for Exporters & Refund Claims.<br><br>
-            Need to get registered or file your return? Contact us directly or use our <a href="services.html">Services page</a>.`
+            Need to get registered or file your return? Check our <a href="services.html">Services page</a>.`
         },
         {
-            keys: ['tax', 'income tax', 'itr', 'tds', 'calculator', 'tax liability', 'computation'],
+            keys: ['tax', 'income tax', 'itr', 'tds', 'calculator', 'tax liability', 'computation', 'regime', 'standard deduction', 'depreciation'],
             response: `We handle all **Direct Taxation & Income Tax** matters:<br>
             • Individual & Corporate ITR Filing<br>
             • TDS/TCS Return filing & Form 16 reconciliation<br>
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             👉 Check out our custom interactive <a href="tax-calculator.html">Income Tax Calculator</a> to estimate your tax liability under the New Regime!`
         },
         {
-            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship'],
+            keys: ['incorporation', 'register company', 'pvt ltd', 'llp', 'opc', 'partnership', 'startup', 'proprietorship', 'incorporate', 'directors', 'din', 'dsc'],
             response: `Want to register your business? We offer end-to-end **Company Incorporation & Startup Registrations**:<br>
             • Private Limited Company setup<br>
             • Limited Liability Partnership (LLP)<br>
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             We take care of name approvals, DSC, Director DINs, PAN, and TAN applications.`
         },
         {
-            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l'],
+            keys: ['audit', 'compliance', 'bookkeeping', 'book-keeping', 'accounting', 'balance sheet', 'tally', 'p&l', 'statutory', 'ledger'],
             response: `Keep your business books clean and compliant. Our **Auditing & Bookkeeping Services** include:<br>
             • Comprehensive Bookkeeping (Tally/Cloud accounting)<br>
             • Preparation of Balance Sheets & Profit & Loss statements<br>
@@ -115,7 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
             Let us handle the numbers so you can focus on growing your business.`
         },
         {
-            keys: ['contact', 'phone', 'whatsapp', 'email', 'number', 'address', 'location', 'office'],
+            keys: ['advisory', 'loans', 'cma', 'project report', 'business plan', 'financial planning', 'reporting', 'valuation'],
+            response: `We offer high-end **Financial Advisory & Planning** services:<br>
+            • Project Reports & CMA Reports for bank loans<br>
+            • Cash Flow planning & Working Capital management<br>
+            • Business Valuation & Corporate Advisory.<br><br>
+            Get strategic advice to grow your business successfully.`
+        },
+        {
+            keys: ['contact', 'phone', 'whatsapp', 'email', 'number', 'address', 'location', 'office', 'hour', 'find you', 'where'],
             response: `Here are the official contact details for **Goodwill Consultancy Service**:<br>
             • 📞 **Phone/WhatsApp**: <a href="https://wa.me/919363476100" target="_blank">+91 93634 76100</a><br>
             • ✉️ **Email**: <a href="mailto:info@goodwillconsultancyservice.com">info@goodwillconsultancyservice.com</a><br>
@@ -123,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             You can also send us a message via the form at the bottom of the home page!`
         },
         {
-            keys: ['security', 'safe', 'bot', 'password', 'otp', 'credential', 'hack', 'login'],
+            keys: ['security', 'safe', 'bot', 'password', 'otp', 'credential', 'hack', 'login', 'leak'],
             response: `🛡️ **Security Alert**: Goodwill Consultancy Service takes your privacy seriously.<br>
             • We will **NEVER** ask you for sensitive passwords, OTPs, or bank account credentials over chat.<br>
             • Never share your personal logins with anyone.<br>
@@ -131,9 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    const fallbackResponse = `I am here to help you with Goodwill Consultancy Services!<br><br>
-    Please ask me about **GST, Income Tax, Company Registration, Auditing, or Contact details**.<br><br>
-    🔒 *Remember: We never ask for passwords or PINs.*`;
+    const fallbackResponse = `I'm sorry, I couldn't find a direct answer to your question on our website.`;
 
     const initialChips = ["GST Filing", "Tax Calculator", "Register Company", "Audits & Books", "Contact Info", "Security Help"];
 
@@ -194,23 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const contactTagline = `<br><br>📩 *Our Team will contact you, kindly fill <a href="index.html#contact">this form</a>.*`;
 
-    function fallbackToRules(cleanQuery) {
-        let foundResponse = null;
-        for (const item of knowledgeBase) {
-            const matches = item.keys.some(key => cleanQuery.includes(key));
-            if (matches) {
-                foundResponse = item.response;
-                break;
-            }
-        }
-
-        if (foundResponse) {
-            appendMessage('bot', foundResponse + contactTagline, true);
-        } else {
-            appendMessage('bot', fallbackResponse + contactTagline, true);
-        }
-    }
-
     function generateResponse(query) {
         const cleanQuery = query.toLowerCase().trim();
         if (!cleanQuery) return;
@@ -218,38 +207,33 @@ document.addEventListener('DOMContentLoaded', () => {
         isTyping = true;
         showTypingIndicator();
 
-        // 1. Check for security/vulnerability questions locally to prevent vulnerability explanations
-        if (containsVulnerabilityKeywords(cleanQuery)) {
-            setTimeout(() => {
-                removeTypingIndicator();
-                isTyping = false;
-                appendMessage('bot', `I cannot assist with queries regarding website vulnerabilities, penetration testing, or security bypasses.` + contactTagline, true);
-            }, 600);
-            return;
-        }
+        // Simulate thinking delay (600ms - 1000ms) for organic premium feel
+        setTimeout(() => {
+            removeTypingIndicator();
+            isTyping = false;
 
-        // 2. Try to fetch from the Google Apps Script LLM proxy (learning model)
-        fetch('https://script.google.com/macros/s/AKfycbw5DwFAlRINSP8p3XBK54NOGRLLo5T4p4AJnpZENYxsrDcjt750Qiz8w0dt1xjy_18EQw/exec', {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify({ action: 'chat', message: query })
-        })
-        .then(response => response.json())
-        .then(data => {
-            removeTypingIndicator();
-            isTyping = false;
-            
-            if (data && data.reply) {
-                appendMessage('bot', data.reply + contactTagline, true);
-            } else {
-                fallbackToRules(cleanQuery);
+            // 1. Check for security/vulnerability questions locally to prevent exploitation explanations
+            if (containsVulnerabilityKeywords(cleanQuery)) {
+                appendMessage('bot', `I cannot assist with queries regarding website vulnerabilities, penetration testing, or security bypasses.` + contactTagline, true);
+                return;
             }
-        })
-        .catch(() => {
-            removeTypingIndicator();
-            isTyping = false;
-            fallbackToRules(cleanQuery);
-        });
+
+            // 2. Local Website Search Matcher
+            let foundResponse = null;
+            for (const item of knowledgeBase) {
+                const matches = item.keys.some(key => cleanQuery.includes(key));
+                if (matches) {
+                    foundResponse = item.response;
+                    break;
+                }
+            }
+
+            if (foundResponse) {
+                appendMessage('bot', foundResponse + contactTagline, true);
+            } else {
+                appendMessage('bot', fallbackResponse + contactTagline, true);
+            }
+        }, 600 + Math.random() * 400);
     }
 
     function handleSend() {
