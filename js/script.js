@@ -168,14 +168,26 @@ function isValidEmail(email) {
     return true;
 }
 
+// Helper function to sanitize user input (XSS prevention)
+function sanitizeInput(text) {
+    if (!text) return '';
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+}
+
 // Contact Form Submission
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const phone = contactForm.querySelector('[name="phone"]').value;
-        const email = contactForm.querySelector('[name="email"]').value;
+        const phone = contactForm.querySelector('[name="phone"]').value.trim();
+        const email = contactForm.querySelector('[name="email"]').value.trim();
 
         // Perform validations
         if (isGenericPhoneNumber(phone)) {
@@ -189,11 +201,11 @@ if (contactForm) {
         }
         
         const formData = {
-            name: contactForm.querySelector('[name="name"]').value,
-            email: email,
-            phone: phone,
-            service: contactForm.querySelector('[name="service"]').value,
-            message: contactForm.querySelector('[name="message"]').value
+            name: sanitizeInput(contactForm.querySelector('[name="name"]').value),
+            email: sanitizeInput(email),
+            phone: sanitizeInput(phone),
+            service: sanitizeInput(contactForm.querySelector('[name="service"]').value),
+            message: sanitizeInput(contactForm.querySelector('[name="message"]').value)
         };
 
         fetch('https://script.google.com/macros/s/AKfycbw5DwFAlRINSP8p3XBK54NOGRLLo5T4p4AJnpZENYxsrDcjt750Qiz8w0dt1xjy_18EQw/exec', {

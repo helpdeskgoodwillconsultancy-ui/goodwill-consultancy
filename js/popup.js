@@ -155,16 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 class="mb-1">Where should we send your results?</h3>
                 <form id="popup-contact-form">
                     <div class="form-group">
-                        <input type="text" id="pc-name" placeholder="Full Name" aria-label="Full Name" required>
+                        <input type="text" id="pc-name" placeholder="Full Name" aria-label="Full Name" maxlength="100" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="pc-phone" placeholder="Mobile Number" aria-label="Mobile Number" required>
+                        <input type="tel" id="pc-phone" placeholder="Mobile Number" aria-label="Mobile Number" maxlength="15" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="pc-email" placeholder="Email Address" aria-label="Email Address" required>
+                        <input type="email" id="pc-email" placeholder="Email Address" aria-label="Email Address" maxlength="100" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="pc-biz" placeholder="Business Name (Optional)" aria-label="Business Name (Optional)">
+                        <input type="text" id="pc-biz" placeholder="Business Name (Optional)" aria-label="Business Name (Optional)" maxlength="100">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Get my free consultation &rarr;</button>
                 </form>
@@ -263,11 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
+                function sanitizeInput(text) {
+                    if (!text) return '';
+                    return text
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#x27;')
+                        .replace(/\//g, '&#x2F;');
+                }
+
                 formData.contact = {
-                    name: document.getElementById('pc-name').value,
-                    phone: phone,
-                    email: email,
-                    biz: document.getElementById('pc-biz').value
+                    name: sanitizeInput(document.getElementById('pc-name').value),
+                    phone: sanitizeInput(phone),
+                    email: sanitizeInput(email),
+                    biz: sanitizeInput(document.getElementById('pc-biz').value)
                 };
                 currentStep++;
                 renderStep();
