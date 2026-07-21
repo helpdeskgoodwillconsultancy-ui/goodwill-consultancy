@@ -208,17 +208,27 @@ if (contactForm) {
             message: sanitizeInput(contactForm.querySelector('[name="message"]').value)
         };
 
-        fetch('https://script.google.com/macros/s/AKfycbw5DwFAlRINSP8p3XBK54NOGRLLo5T4p4AJnpZENYxsrDcjt750Qiz8w0dt1xjy_18EQw/exec', {
+        fetch('/api/contact', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(formData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errData => {
+                    throw new Error(errData.error || 'Server error');
+                });
+            }
+            return response.json();
+        })
         .then(data => {
             contactForm.reset();
             alert('✅ Message sent! We will get back to you soon.');
         })
         .catch(error => {
-            alert('❌ Something went wrong. Please try again.');
+            alert('❌ ' + error.message);
         });
     });
 }
